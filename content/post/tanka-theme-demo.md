@@ -2,6 +2,7 @@
 author: Jane Doe
 date: "2017-12-26"
 title: Tanka Theme Demo
+draft: true
 ---
 
 [Tanka](https://github.com/nanxstats/hugo-tanka) is a minimalist, text-oriented, and performant Hugo theme.
