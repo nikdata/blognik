@@ -23,6 +23,16 @@ All opinions and views are my own and do not represent my employer.</description
     </item>
     
     <item>
+      <title>Magic 8 Ball Function</title>
+      <link>/post/magic-8-ball-function/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/magic-8-ball-function/</guid>
+      <description>In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that ‘acted’ like the venerable Magic 8 Ball. So let’s get to it!
+Prerequisite The function must output one of the following texts:   ‘I don’t see that happening.’ ‘You must be dreaming.’ ‘Chances are good.’ ‘If you work hard and stay focused, then this might happen.</description>
+    </item>
+    
+    <item>
       <title>Tanka Theme Demo</title>
       <link>/post/tanka-theme-demo/</link>
       <pubDate>Tue, 26 Dec 2017 00:00:00 +0000</pubDate>
