@@ -1,6 +1,6 @@
 baseurl = "/"
-title = "Hugo Tanka Theme"
-author = "Nan Xiao"
+title = "Nik's Data Lake"
+author = "Nik Agarwal"
 canonifyurls = true
 languagecode = "en"
 theme = "hugo-tanka"
