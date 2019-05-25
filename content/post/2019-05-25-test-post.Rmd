@@ -1,6 +1,6 @@
 ---
-title: test post
-author: Nik Agarwal
+title: "test post"
+author: "Nik Agarwal"
 date: '2019-05-25'
 slug: test-post
 categories: []
