@@ -1,0 +1,205 @@
+---
+title: Tidy Correlations
+author: Nik Agarwal
+date: '2018-07-16'
+slug: tidy-correlations
+categories: []
+tags: []
+draft: false
+---
+
+
+
+<p>When creating correlation matrices, one of the hardest things I find is the ability to read it easily. Here’s an example of a correlation table:</p>
+<pre class="r"><code>            a            b            x          y           z
+a  1.00000000  0.127548585  0.033222037  0.1765430 -0.08899377
+b  0.12754858  1.000000000  0.006865677  0.2414983 -0.05343201
+x  0.03322204  0.006865677  1.000000000 -0.1045047  0.03734388
+y  0.17654300  0.241498328 -0.104504744  1.0000000  0.21812433
+z -0.08899377 -0.053432013  0.037343880  0.2181243  1.00000000</code></pre>
+<p>In order to find the two variables that have the highest positive or negative correlation is not easy. You pretty much have to scan each row and remember the highest value. In other words, this output is NOT tidy and therefore, not very friendly.</p>
+<p>So how do we make this tidy-R (pun intended)? Here’s the full code before we dive in to the details (and the end results).</p>
+<pre class="r"><code># load library
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ──────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.1.1     ✔ purrr   0.3.2
+## ✔ tibble  2.1.1     ✔ dplyr   0.8.1
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ─────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code># generate a dataframe
+
+sampledata &lt;- tibble(a = runif(n = 100, min = 101, max = 999),
+                     b = runif(n = 100, min = 0, max = 30),
+                     x = sample.int(n = 1000, size = 100, replace = T),
+                     y = sample.int(n = 1000, size = 100, replace = T),
+                     z = runif(n = 100, min = 0, max = 1))
+
+sample_cor &lt;- cor(sampledata) # note how this creates row labels
+
+sample_cor &lt;- as.tibble(sample_cor, rownames = &#39;variable&#39;) # save the row labels in their own column</code></pre>
+<pre><code>## Warning: `as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).
+## This warning is displayed once per session.</code></pre>
+<pre class="r"><code>sample_cor %&gt;%
+  gather(key = &#39;var2&#39;, value = &#39;correlation&#39;, -variable) %&gt;%
+  filter(variable != var2) %&gt;%
+  mutate(abs_correlation = abs(correlation)) %&gt;%
+  arrange(desc(abs_correlation)) %&gt;%
+  group_by(correlation) %&gt;%
+  filter(row_number() == 1)</code></pre>
+<pre><code>## # A tibble: 10 x 4
+## # Groups:   correlation [10]
+##    variable var2  correlation abs_correlation
+##    &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;           &lt;dbl&gt;
+##  1 y        b          0.152           0.152 
+##  2 y        x          0.122           0.122 
+##  3 x        a          0.118           0.118 
+##  4 z        x         -0.0967          0.0967
+##  5 b        a         -0.0884          0.0884
+##  6 z        a         -0.0650          0.0650
+##  7 y        a          0.0626          0.0626
+##  8 z        y         -0.0403          0.0403
+##  9 z        b         -0.0328          0.0328
+## 10 x        b          0.0273          0.0273</code></pre>
+<p>So let’s go about decoding all of this sequentially.</p>
+<div id="code-explanation" class="section level2">
+<h2>Code Explanation</h2>
+<div id="load-library" class="section level3">
+<h3>1. Load library</h3>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p>First thing I did was load the most important library there is (at least for me) in R: tidyverse. This library consists of the following packages:
+- dplyr
+- ggplot2
+- tibble
+- tidyr
+- readr
+- purrr
+- stringr
+- forcats</p>
+<p>This may seem like quite a few libraries, but the benefit is that it’s only one line of code to load multiple libraries.</p>
+</div>
+<div id="optional-create-sample-data" class="section level3">
+<h3>2. (optional) create sample data</h3>
+<pre class="r"><code>sampledata &lt;- tibble(a = runif(n = 100, min = 101, max = 999),
+                     b = runif(n = 100, min = 0, max = 30),
+                     x = sample.int(n = 1000, size = 100, replace = T),
+                     y = sample.int(n = 1000, size = 100, replace = T),
+                     z = runif(n = 100, min = 0, max = 1))</code></pre>
+<p>This step is <strong>optional</strong> since I need to create some sample data for this example. Typically, you’ll probably have your own dataset that you can load using <code>read_csv()</code>.</p>
+<p>Just note that correlations are, for the most part, only done on numerical values.</p>
+</div>
+<div id="create-correlation-matrix" class="section level3">
+<h3>3. Create Correlation Matrix</h3>
+<pre class="r"><code>sample_cor &lt;- cor(sampledata)</code></pre>
+<p>The <code>cor()</code> function in R creates a numeric matrix/array that has the correlation values. However, it also creates row labels - which are not necessarily tidy.</p>
+<p>The output of this is the same output at the top of this post.</p>
+<p>In order to make this tidy, we need to convert the row labels into a column.</p>
+</div>
+<div id="row-labels-to-column" class="section level3">
+<h3>4. Row labels to column</h3>
+<pre class="r"><code>sample_cor &lt;- as.tibble(sample_cor, rownames = &#39;variable&#39;)</code></pre>
+<p>This simple command will create a column called ‘variable’ and store the row labels within it. Here’s what it looks like:</p>
+<pre class="r"><code># A tibble: 5 x 6
+  variable       a        b        x      y       z
+  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+1 a         1       0.128    0.0332   0.177 -0.0890
+2 b         0.128   1        0.00687  0.241 -0.0534
+3 x         0.0332  0.00687  1       -0.105  0.0373
+4 y         0.177   0.241   -0.105    1      0.218
+5 z        -0.0890 -0.0534   0.0373   0.218  1     </code></pre>
+<p>Much better!</p>
+<p>But it’s still a bit tricky to get the top pairs.</p>
+<p>Onto the final step.</p>
+</div>
+<div id="gather-tidy" class="section level3">
+<h3>5. Gather &amp; tidy</h3>
+<pre class="r"><code>sample_cor %&gt;%
+  gather(key = &#39;var2&#39;, value = &#39;correlation&#39;, -variable) %&gt;%
+  filter(variable != var2) %&gt;%
+  mutate(abs_correlation = abs(correlation)) %&gt;%
+  arrange(desc(abs_correlation)) %&gt;%
+  group_by(correlation) %&gt;%
+  filter(row_number() == 1)</code></pre>
+<p>This code is a bit lengthy since I’ve piped multiple commands.</p>
+<p>The first step is to pipe the variable <code>sample_cor</code> into the command <code>gather()</code>. What this function will do is basically collapse the grid that we have. The value ‘key’ is used as a column, the value ‘correlation’ is used to create a column of all the numerical values in the grid. The magic sauce here is the ‘-variable’. What this does is preserve the column ‘variable’ as another column and enables it to be used as a paired column in junction with the ‘key’.</p>
+<p>Here’s what the output looks like after the first pipe (using the <code>head()</code> function).</p>
+<pre class="r"><code># A tibble: 6 x 3
+  variable var2  correlation
+  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;
+1 a        a          1     
+2 b        a          0.128
+3 x        a          0.0332
+4 y        a          0.177
+5 z        a         -0.0890
+6 a        b          0.128</code></pre>
+<p>The next line, <code>filter(variable != var2)</code> simply removes the pairs that are equal. For example, we always know that the correlation of a variable against itself is equal to 1 (i.e., the diagonals in a correlation matrix are always 1). This does not help much - so we want to remove them using the filter command. Here’s the output now (again using the <code>head()</code> function).</p>
+<pre class="r"><code># A tibble: 6 x 3
+  variable var2  correlation
+  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;
+1 b        a         0.128  
+2 x        a         0.0332
+3 y        a         0.177  
+4 z        a        -0.0890
+5 a        b         0.128  
+6 x        b         0.00687</code></pre>
+<p>Since we want to know the top pairs that are correlated, we can now sort. However, top pairs in the world of correlation can also be negative. Recall that correlation values range from -1 to +1. Therefore, I created another column that refers to the absolute correlation value. This enables correlations that are close to -1 to come to the top of the list along with correlations that are close to +1.</p>
+<p>To accomplish the creation of an absolute correlaton column, the next line will suffice:</p>
+<pre class="r"><code>mutate(abs_correlation = abs(correlation))</code></pre>
+<p>The resulting output:</p>
+<pre class="r"><code># A tibble: 6 x 4
+  variable var2  correlation abs_correlation
+  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;           &lt;dbl&gt;
+1 b        a         0.128           0.128  
+2 x        a         0.0332          0.0332
+3 y        a         0.177           0.177  
+4 z        a        -0.0890          0.0890
+5 a        b         0.128           0.128  
+6 x        b         0.00687         0.00687</code></pre>
+<p>Now we can arrange all of these descending by the absolute correlations with the following line:</p>
+<pre class="r"><code>arrange(desc(abs_correlation))</code></pre>
+<p>The resulting output is now:</p>
+<pre class="r"><code># A tibble: 6 x 4
+  variable var2  correlation abs_correlation
+  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;           &lt;dbl&gt;
+1 y        b           0.241           0.241
+2 b        y           0.241           0.241
+3 z        y           0.218           0.218
+4 y        z           0.218           0.218
+5 y        a           0.177           0.177
+6 a        y           0.177           0.177</code></pre>
+<p>Notice how the first two are basically the same. Recall that the correlation of the same pairs (regardless of order) is the same. In other words, the correlation of arbitrary variables <strong>a</strong> and <strong>b</strong> is equal to <strong>b</strong> and <strong>a</strong>.</p>
+<p>Ideally, we want to remove these ‘duplicates’ and keep only the unique ones. This is accomplished using the last two lines in the code block:</p>
+<pre class="r"><code>group_by(correlation) %&gt;%
+filter(row_number() == 1)</code></pre>
+<p>The <code>group_by()</code> statement enables us to isolate the unique correlation values and the <code>row_number()</code> function sequentially determines the unique row number once the combination of pairs changes. If we filter this for 1, then we only get the unique combinations and the final output:</p>
+<pre class="r"><code># A tibble: 10 x 4
+# Groups:   correlation [10]
+   variable var2  correlation abs_correlation
+   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;           &lt;dbl&gt;
+ 1 y        b         0.241           0.241  
+ 2 z        y         0.218           0.218  
+ 3 y        a         0.177           0.177  
+ 4 b        a         0.128           0.128  
+ 5 y        x        -0.105           0.105  
+ 6 z        a        -0.0890          0.0890
+ 7 z        b        -0.0534          0.0534
+ 8 z        x         0.0373          0.0373
+ 9 x        a         0.0332          0.0332
+10 x        b         0.00687         0.00687</code></pre>
+<p>Here’s an output of what that row number looks like:</p>
+<pre class="r"><code># A tibble: 20 x 5
+# Groups:   correlation [10]
+   variable var2  correlation abs_correlation rownumber
+   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;           &lt;dbl&gt;     &lt;int&gt;
+ 1 y        b         0.241           0.241           1
+ 2 b        y         0.241           0.241           2
+ 3 z        y         0.218           0.218           1
+ 4 y        z         0.218           0.218           2
+ 5 y        a         0.177           0.177           1
+ 6 a        y         0.177           0.177           2</code></pre>
+<p>See how the first one is y and b and is row number 1. However, the next batch is b and y and it is row number 2. This is very similar to the ranking functions within SQL.</p>
+<p>So there you have it. Now we know the top pairs quite easily.</p>
+</div>
+</div>

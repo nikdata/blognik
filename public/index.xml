@@ -6,19 +6,10 @@
     <description>Recent content on Nik&#39;s Data Lake</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>test post</title>
-      <link>/post/test-post/</link>
-      <pubDate>Sat, 25 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/test-post/</guid>
-      <description> Test Post head(iris) ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 5.1 3.5 1.4 0.2 setosa ## 2 4.9 3.0 1.4 0.2 setosa ## 3 4.7 3.2 1.3 0.2 setosa ## 4 4.6 3.1 1.5 0.2 setosa ## 5 5.0 3.6 1.4 0.2 setosa ## 6 5.4 3.9 1.7 0.4 setosa  </description>
-    </item>
     
     <item>
       <title>About Me</title>
@@ -29,6 +20,26 @@
       <description>I&amp;rsquo;m a Data Scientist at Deere &amp;amp; Company working within the Intelligent Solutions Group in Urbandale, IA. My interests include statistics, data analysis, programming with R, photography, and road cycling.
 Education I have a M.S. in Predictive Analytics from Northwestern University and a B.S. in Industrial and Systems Engineering from Northern Illinois University.
 All opinions and views are my own and do not represent my employer.</description>
+    </item>
+    
+    <item>
+      <title>Tidy Correlations</title>
+      <link>/post/tidy-correlations/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/tidy-correlations/</guid>
+      <description>When creating correlation matrices, one of the hardest things I find is the ability to read it easily. Here’s an example of a correlation table:
+ a b x y z a 1.00000000 0.127548585 0.033222037 0.1765430 -0.08899377 b 0.12754858 1.000000000 0.006865677 0.2414983 -0.05343201 x 0.03322204 0.006865677 1.000000000 -0.1045047 0.03734388 y 0.17654300 0.241498328 -0.104504744 1.0000000 0.21812433 z -0.08899377 -0.053432013 0.037343880 0.2181243 1.00000000 In order to find the two variables that have the highest positive or negative correlation is not easy.</description>
+    </item>
+    
+    <item>
+      <title>Magic 8 Ball Function</title>
+      <link>/post/magic-8-ball-function/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/magic-8-ball-function/</guid>
+      <description>In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that ‘acted’ like the venerable Magic 8 Ball. So let’s get to it!
+Prerequisite The function must output one of the following texts:   ‘I don’t see that happening.’ ‘You must be dreaming.’ ‘Chances are good.’ ‘If you work hard and stay focused, then this might happen.</description>
     </item>
     
   </channel>
