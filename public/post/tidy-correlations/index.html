@@ -96,16 +96,16 @@ sample_cor &lt;- as.tibble(sample_cor, rownames = &#39;variable&#39;) # save the
 ## # Groups:   correlation [10]
 ##    variable var2  correlation abs_correlation
 ##    &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;           &lt;dbl&gt;
-##  1 y        b          0.152           0.152 
-##  2 y        x          0.122           0.122 
-##  3 x        a          0.118           0.118 
-##  4 z        x         -0.0967          0.0967
-##  5 b        a         -0.0884          0.0884
-##  6 z        a         -0.0650          0.0650
-##  7 y        a          0.0626          0.0626
-##  8 z        y         -0.0403          0.0403
-##  9 z        b         -0.0328          0.0328
-## 10 x        b          0.0273          0.0273</code></pre>
+##  1 z        y         0.186           0.186  
+##  2 x        b        -0.132           0.132  
+##  3 y        a         0.0948          0.0948 
+##  4 y        b        -0.0880          0.0880 
+##  5 y        x         0.0775          0.0775 
+##  6 z        b        -0.0489          0.0489 
+##  7 x        a        -0.0385          0.0385 
+##  8 z        a        -0.0354          0.0354 
+##  9 z        x         0.0345          0.0345 
+## 10 b        a        -0.00912         0.00912</code></pre>
 <p>So let’s go about decoding all of this sequentially.</p>
 <div id="code-explanation" class="section level2">
 <h2>Code Explanation</h2>
@@ -275,6 +275,12 @@ filter(row_number() == 1)</code></pre>
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
+
+
+
+
+
+
 
 
   
