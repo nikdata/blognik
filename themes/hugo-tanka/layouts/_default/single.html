@@ -11,6 +11,8 @@
     {{ .Content }}
   </div>
 
+  {{ partial "tags.html" .}}
+
   <div id=links>
     {{ if .PrevInSection }}
       <a class="basic-alignment left" href="{{.PrevInSection.Permalink}}">&laquo; {{.PrevInSection.Title}}</a>
@@ -22,7 +24,5 @@
 </section>
 
 {{ partial "disqus.html" .}}
-
-{{ partial "tags.html" .}}
 
 {{ partial "footer.html" . }}
