@@ -17,6 +17,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [params]
   sitename = "Nik's Data Lake"
 
+[Taxonomies]
+  tag = "tags"
+
 [[menu.main]]
     name = "Home"
     url = "https://nik.netlify.com"
@@ -32,4 +35,3 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[menu.main]]
     name = "About"
     url = "/about/"
-
