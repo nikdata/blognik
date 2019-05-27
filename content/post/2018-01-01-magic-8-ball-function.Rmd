@@ -4,7 +4,7 @@ author: Nik Agarwal
 date: '2018-01-01'
 slug: magic-8-ball-function
 categories: []
-tags: ["RStats"]
+tags: ["RStats", "functions"]
 draft: false
 ---
 
