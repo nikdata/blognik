@@ -4,7 +4,7 @@ author: Nik Agarwal
 date: '2018-07-16'
 slug: tidy-correlations
 categories: []
-tags: []
+tags: ["correlations","rstats"]
 draft: false
 ---
 
