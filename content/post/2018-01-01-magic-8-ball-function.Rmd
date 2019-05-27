@@ -3,7 +3,7 @@ title: Magic 8 Ball Function
 author: Nik Agarwal
 date: '2018-01-01'
 slug: magic-8-ball-function
-categories: ["R"]
+categories: []
 tags: ["RStats"]
 draft: false
 ---
