@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>functions on Nik&#39;s Data Lake</title>
+    <title>functions on Nik Agarwal</title>
     <link>/tags/functions/</link>
-    <description>Recent content in functions on Nik&#39;s Data Lake</description>
+    <description>Recent content in functions on Nik Agarwal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2020. All rights reserved.</copyright>
     <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/functions/index.xml" rel="self" type="application/rss+xml" />

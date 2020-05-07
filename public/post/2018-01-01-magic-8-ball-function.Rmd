@@ -1,0 +1,80 @@
+---
+title: Magic 8 Ball Function
+author: Nik Agarwal
+date: '2018-01-01'
+slug: magic-8-ball-function
+categories: []
+tags: ["RStats", "functions"]
+draft: false
+---
+
+In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that 'acted' like the venerable [Magic 8 Ball](https://en.wikipedia.org/wiki/Magic_8-Ball). So let's get to it!
+
+## Prerequisite
+
+1. The function must output one of the following texts:
+
+* 'I don't see that happening.'
+* 'You must be dreaming.'
+* 'Chances are good.'
+* 'If you work hard and stay focused, then this might happen.'
+* 'When the sun shines, it shines on your face.'
+* 'Definitely going to happen!'
+* 'Take some time to think about it.'
+* 'This is not a good idea!'
+* 'This is a great idea!'
+* 'Cannot be determined at this time. Try Again!'
+
+2. Add an optional feature in which the user can include the seed number
+
+3. The function should be called **magic.8ball()** and if a seed is to be used, then the function could called as **magic.8ball(123)**
+
+## Solution
+
+### Function Definition
+
+```{r}
+magic.8ball <- function(x.seed) {
+  # define messages
+  msg1 <- "I don't see that happening."
+  msg2 <- 'You must be dreaming.'
+  msg3 <- 'Chances are good.'
+  msg4 <- 'If you work hard and stay focused, then this might happen.'
+  msg5 <- 'When the sun shines, it shines on your face.'
+  msg6 <- 'Definitely going to happen!'
+  msg7 <- 'Take some time to think about it.'
+  msg8 <- 'This is not a good idea!'
+  msg9 <- 'This is a great idea!'
+  msg10 <- 'Cannot be determined at this time.  Try Again!'
+  msg_list <- list(msg1, msg2, msg3, msg4, msg5, msg6, msg7, msg8, msg9, msg10)
+
+  if(missing(x.seed)) {
+    x <- sample(1:10,1)
+  } else {
+    set.seed(x.seed)
+    x <- sample(1:10,1)
+  }
+  return(print(msg_list[x]))
+}
+```
+
+### Function Results
+
+#### Function with random seed
+```{r}
+magic.8ball()
+```
+
+#### Function with user-defined seed
+
+```{r}
+magic.8ball(123)
+```
+
+### Function Explanation
+
+For the most part, this function is quite simple. Although there are numerous ways to derive this solution, I felt it was easier to define each message into a variable and then store all of the variables in a list. Then, the function would simply sample an integer between 1 and 10 (since there are 10 messages) and recall the corresponding list member for display to the end user.
+
+The slight twist in this example was the user-defined seed. In order ot do this correctly, I employed the command ```missing``` to check and see if the user had originally entered a value in the function call. If none is there, then the function uses a random seed and if the user did enter some number, then it sets the seed accordingly.
+
+Hope all that makes sense. Let me know if you have any questions!
