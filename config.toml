@@ -19,6 +19,7 @@ paginate = 10
   # disqus = "Your Disqus shortname"
   # CSS name for highlight.js
   highlightjs = "agate"
+  highlightjs_extra_languages = ["yaml"]
   dateFormat = "02 Jan 2006, 15:04"
 
 [menu]
@@ -41,11 +42,11 @@ paginate = 10
     weight = 3
     identifier = "about"
     url = "/about/"
-  [[menu.main]]
-    name = "Contact"
-    pre = "<i class='fa fa-phone fa-fw'></i>"
-    weight = 4
-    url = "/contact/"
+  # [[menu.main]]
+  #  name = "Contact"
+  #  pre = "<i class='fa fa-phone fa-fw'></i>"
+  #  weight = 4
+  #  url = "/contact/"
 
 [social]
   # Link your social networking accouns to the side menu
