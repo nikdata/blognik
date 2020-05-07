@@ -1,9 +1,9 @@
-baseurl = "https://nik.netlify.com/"
+baseurl = "https://nik.netlify.app/"
 languageCode = "en-us"
-title = "Blackburn Theme Demo"
+title = "Nik Agarwal"
 theme = "blackburn"
-author = "Yoshiharu Yamashita"
-copyright = "&copy; 2016. All rights reserved."
+author = "Nik Agarwal"
+copyright = "&copy; 2020. All rights reserved."
 canonifyurls = true
 paginate = 10
 
@@ -13,10 +13,10 @@ paginate = 10
 
 [params]
   # Shown in the home page
-  subtitle = "A Hugo Theme"
-  brand = "Blackburn"
-  googleAnalytics = "Your Google Analytics tracking ID"
-  disqus = "Your Disqus shortname"
+  subtitle = ""
+  brand = "Nikhil Agarwal"
+  # googleAnalytics = "Your Google Analytics tracking ID"
+  # disqus = "Your Disqus shortname"
   # CSS name for highlight.js
   highlightjs = "androidstudio"
   dateFormat = "02 Jan 2006, 15:04"
@@ -50,9 +50,9 @@ paginate = 10
 [social]
   # Link your social networking accouns to the side menu
   # by entering your username or ID.
-  twitter = "*"
-  facebook = "*"
-  instagram = "*"
-  github = "yoshiharuyamashita"
-  stackoverflow = "*"
-  linkedin = "*"
+  twitter = "nikagarwal"
+  # facebook = "*"
+  # instagram = "*"
+  github = "nikdata"
+  # stackoverflow = "*"
+  linkedin = "nik-agarwal"
