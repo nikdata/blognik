@@ -1,31 +1,16 @@
 +++
 title = "About"
-date = "2014-04-09"
+date = "2020-07-05"
 sidemenu = "true"
-description = "About me and this site"
+description = "About me"
 +++
 
-Hugo is a static site engine written in Go.
+Hi! My name is Nik and I enjoy tinkering with data.
 
+I currently work at [John Deere](https://www.johndeere.com) as a data scientist where I develop predictive models to help our customers make better decisions on their farm operations with their John Deere machines. All content on this site express my view and not of my employer. None of the content on this site are endorsed or can be construed as an endorsement by Deere & Company.
 
-It makes use of a variety of open source projects including:
+In my spare time, I enjoy taking walks with my family, taking countless snapshots, and playing around with data & machine learning models.
 
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
+I have a Master's in Data Science from Northwestern University and a Bachelor's in Industrial Engineering from Northern Illinois University.
 
-Learn more and contribute on [GitHub](https://github.com/spf13).
-
-## Setup
-
-Some fun facts about [Hugo](http://gohugo.io/):
-
-* Built in [Go](http://golang.org/)
-* Loosely inspired by [Jekyll](http://jekyllrb.com/)
-* Primarily developed by [spf13](http://spf13.com/) on the train while commuting to and from Manhattan.
-* Coded in [Vim](http://vim.org) using [spf13-vim](http://vim.spf13.com/)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/spf13/hugo/issues/new) or [ask me on Twitter](https://twitter.com/spf13).
-
-Thanks for reading!
+Thanks for stopping by!
