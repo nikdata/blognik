@@ -1,5 +1,5 @@
 +++
-title = "About"
+title = "about me"
 date = "2020-05-06"
 sidemenu = "true"
 description = ""
