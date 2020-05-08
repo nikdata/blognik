@@ -2,7 +2,7 @@
 title = "About"
 date = "2020-07-05"
 sidemenu = "true"
-description = "About me"
+description = ""
 +++
 
 Hi! My name is Nik and I enjoy tinkering with data.
