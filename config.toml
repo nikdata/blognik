@@ -48,7 +48,7 @@ paginate = 10
   #  url = "/contact/"
   [[menu.main]]
     name = "email"
-    pre = "<i class='fa fa-user fa-fw'></i>"
+    pre = "<i class='fa fa-envelope fa-fw'></i>"
     weight = 4
     identifier = "email"
     url = "mailto:r@niks.me?subject=Hi%20Nik!"
