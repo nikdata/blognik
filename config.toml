@@ -24,19 +24,19 @@ paginate = 10
 [menu]
   # Shown in the side menu.
   [[menu.main]]
-    name = "Home"
+    name = "home"
     pre = "<i class='fa fa-home fa-fw'></i>"
     weight = 1
     identifier = "home"
     url = "/"
   [[menu.main]]
-    name = "Posts"
+    name = "posts"
     pre = "<i class='fa fa-list fa-fw'></i>"
     weight = 2
     identifier = "post"
     url = "/post/"
   [[menu.main]]
-    name = "About"
+    name = "about"
     pre = "<i class='fa fa-user fa-fw'></i>"
     weight = 3
     identifier = "about"
