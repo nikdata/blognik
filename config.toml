@@ -46,6 +46,12 @@ paginate = 10
   #  pre = "<i class='fa fa-phone fa-fw'></i>"
   #  weight = 4
   #  url = "/contact/"
+  [[menu.main]]
+    name = "email"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 4
+    identifier = "email"
+    url = "mailto:r@niks.me?subject=Hi%20Nik!"
 
 [social]
   # Link your social networking accouns to the side menu
@@ -56,3 +62,4 @@ paginate = 10
   github = "nikdata"
   # stackoverflow = "*"
   linkedin = "nik-agarwal"
+  reddit = "cmdrmac"
