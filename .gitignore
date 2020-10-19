@@ -1,5 +1,11 @@
-
+# mac extras
 \.DS_Store
-.Rproj.user
 
+# RStudio extras
+.Rproj.user
 \.Rhistory
+
+# Misc. Files & Folders
+archived_posts*
+archived_posts/
+

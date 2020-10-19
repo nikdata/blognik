@@ -1,9 +1,9 @@
 baseurl = "https://nik.netlify.app/"
 languageCode = "en-us"
-title = "Nik Agarwal"
+title = "{randomNik}"
 theme = "blackburn"
 author = "Nik Agarwal"
-copyright = "&copy; 2020. All rights reserved."
+copyright = "&copy; 2020. Nikhil Agarwal."
 canonifyurls = true
 paginate = 10
 
@@ -13,8 +13,8 @@ paginate = 10
 
 [params]
   # Shown in the home page
-  subtitle = ""
-  brand = "Nik Agarwal"
+  subtitle = "Nik's blog on random musings & random data"
+  brand = "{randomNik}"
   # googleAnalytics = "Your Google Analytics tracking ID"
   # disqus = "Your Disqus shortname"
   # CSS name for highlight.js
