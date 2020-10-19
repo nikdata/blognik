@@ -5,10 +5,16 @@ sidemenu = "true"
 description = ""
 +++
 
-I'm Nik Agarwal and I'm a data scientist with [MakuSafe](https://www.makusafe.com). My interests include learning about stats, data analysis, road biking, drone flying, and photography. I previously worked as a Data Scientist at [John Deere](https://www.johndeere.com).
+I'm Nikhil Agarwal (Nik) and this is my blog for my random musings on life and data.
 
-I have a Master's in Data Science from [Northwestern University](https://www.northwestern.edu) and a Bachelor's in Industrial Engineering from [Northern Illinois University](https://www.niu.edu).
+Currently, I'm a principal data scientist at [Makusafe](https://www.makusafe.com), where I focus on predictive analytics on motion & location classification with our wearable device. Prior to MakuSafe, I was a data scientist in varying rolest at [John Deere](https://www.johndeere.com) focusing on machine & customer behavior modeling, market basket analysis, and anamoly detection on machine usage. Early on in my career, I was a manufacturing engineer focused on optimal assembly line work distribution/allocation along with process optimization.
+
+Outside of work, my interests include:
+- stats & data analysis
+- road biking
+- photography (DSLR & drone)
+- taking adventurous hikes with my family
+
+I have a Master's degree in Data Science from [Northwestern University](https://www.northwestern.edu) and a Bachelor's degree in Industrial Engineering from [Northern Illinois University](https://www.niu.edu).
 
 Thanks for stopping by!
-
-*All opinions and views are my own and do not represent my employer.*
