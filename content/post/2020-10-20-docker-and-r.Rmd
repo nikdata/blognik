@@ -1,0 +1,19 @@
+---
+title: docker and R
+author: Nik Agarwal
+date: '2020-10-20'
+slug: []
+categories: []
+tags: []
+description: ''
+topics: []
+---
+
+Things to talk about:
+
+- Benefits
+- Shoutout
+- Dockerfile
+- Dive into Dockerfile components
+- shell commands
+- closing thoughts
