@@ -1,0 +1,1 @@
+docker ps -q --filter ancestor="randomnik_blog:latest" | xargs docker stop
