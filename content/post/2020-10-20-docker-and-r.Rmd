@@ -8,49 +8,37 @@ tags: ["docker"]
 draft: true
 ---
 
-Things to talk about:
-
-- Benefits
-  - reproducibility
-  - consistent 'experience'
-  - need to think about what you want installed (not a VM)
-  - disadvantages: image size; building takes time, libraries can take a while to download & install
-- Shoutout
-  - [Rahul](https://rsangole.netlify.app/post/2020/10/10/reproducible-work-in-r/)
-  - MRAN vs. Package Manager from RStudio
-  - binary vs. source
-- Dockerfile
-  - [My Dockerfile](https://github.com/nikdata/blognik/blob/master/docker/Dockerfile)
-- Dive into Dockerfile components
-  - The "meta" data
-  - Installing the Linux libraries
-  - Installing the R libraries
-  - Installing hugo
-- shell commands
-  - build, run, stop
-  - how to run on Mac
-- closing thoughts
-- References
-  1. https://github.com/rocker-org/rocker-versioned2
-  2. https://www.garrickadenbuie.com/blog/blogdown-netlify-new-post-workflow/
-  3. https://medium.com/@skyetetra/r-docker-faster-28e13a6d241d
-  4. https://github.com/eddelbuettel/littler/blob/master/inst/examples/install2.r
-  5. https://packagemanager.rstudio.com/client/#/repos/1/overview
-
-# Perks  
-
 My good friend (and former classmate) Rahul Sangole has a great [blog post](https://rsangole.netlify.app/post/2020/10/10/reproducible-work-in-r/) about setting up Docker & R and why he did it. It really boils down to a couple different things: reproducibility and having a consistent development environment. As a data scientist, I cannot stress the importance of reproducibility. If you can't reproduce your results/analyses (nor can anyone else), then suffice to say, that's a bad thing!
 
-# The Challenge
+Anyways, I ran into some issues running Rahul's Dockerfile. Specifically, I couldn't get blogdown to work with my blog. I'm not sure if that was by design, but I wanted to "amend" his blog post with a few of my own points:
 
-Reproducibility in a data science project is key to having a defendable analysis and defendable models. Those are key elements to ensure your analyses and models are interpreted exactly how you want them to be interpreted. One of the challenges when developing analyses in R is the limited ability to have 'frozen' package versions. When you update packages in R, they update and you almost lose the older versions. This may not always be what you want as your project work may break. Rahul does a great job also pointing out how other folks on his team don't manage packages at the same cadence as other team members. One obvious solution is to have a **a reproducible and consistent development environment** that the whole team can work off of. This ensures that everyone is on the same 'page'. Plus, it ensures that if new packages are used, the whole team can collectively agree or disagree on its usage.
+- using binaries instead of source files for R packages
+- using RStudio's Package Manager instead of MRAN
+- installing Hugo (with blogdown) during the Docker image creation
 
-# The Savior
+For reference, here's a link to my [Dockerfile](https://github.com/nikdata/blognik/blob/master/docker/Dockerfile).
 
-Docker is a great solution to this problem. Best of all, it simply consists of a small text file (called *Dockerfile* without any extension). In this file, you can define any and all steps you want done. A Docker file is then compiled into an image and a running image is found within a container. What makes Docker really cool is that it has all the software you need and expect every single time you run it. It won't add or delete anything without your explicit instruction.
+# Source vs. Binary
 
-Docker is NOT a virtual machine (VM). It doesn't necessairly have a complete OS with independent memory managment from your computer. Whenever a docker container shuts down, if the work wasn't saved in a perpetual memory location, your work is lost. And with Docker, you only install what you need for your project work - you don't want to recreate your own machine.
+This is a key concept that I think most users going down the Docker and R path should be aware of. Simply put, a "binary" is already compiled for a given system and a "source" is not. Think of the "source" file like a set-up file that will need to be installed. On the other hand, a "binary" is the whole package that does not require installation (think copy & paste of the package). Hence, when compiling a Docker image, using "binary" files as much as possible will help speed up the creation time.
 
-# The Docker Pain
+Since binary files are already compiled for a particular system, it's critical that you know which system you are using. For example, binary R packages constructed for Ubuntu Xenial will NOT work for RedHat.
 
-Docker is a great solution, however, it does have its major drawbacks. It 
+# MRAN vs. RStudio Package Manager
+
+As Rahul points out in his blog, he uses [MRAN](https://mran.microsoft.com) - Microsoft's solution to 'archiving' the activity they see on CRAN. I'm not 100% certain, but I don't think MRAN has binaries available for the different R packages. On the other hand, [RStudio's Package Manager](https://packagemanager.rstudio.com/client/#/repos/1/packages/A3) has *both*. Furthermore, RStudio Package Manager also has 'snapshots' similar to MRAN for particular days. While MRAN is more comprehensive and uses actual dates in their URL, RStudio does offer a compelling alternative.
+
+# Installing Hugo
+
+This one took me a while to figure out, but the end solution was much simpler than the rabbit holes I went down. Basically, I just need to have blogdown install it for me after it (blogdown) was installed.
+
+```
+WORKDIR /home/rstudio/bin/
+RUN R -e "options(blogdown.hugo.dir = '/home/rstudio/bin'); blogdown::install_hugo(version = '0.70.0')"
+```
+
+The WORKDIR argument is key as it creates that folder location and sets the working directory to it. This is the location where the function `blogdown::install_hugo()` will install to.
+
+# Success
+
+This Dockerfile creates an image that works on my machine quite well. I also was able to get it to work on my work machine. I am a bit troubled at the overall size of the Docker image - which for me was a bit over 5 GB. 
