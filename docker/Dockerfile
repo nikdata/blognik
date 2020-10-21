@@ -90,3 +90,6 @@ RUN install2.r -r https://packagemanager.rstudio.com/all/__linux__/focal/latest 
 WORKDIR /home/rstudio/bin/
 RUN R -e "options(blogdown.hugo.dir = '/home/rstudio/bin'); blogdown::install_hugo(version = '0.70.0')"
 
+# expose ports
+EXPOSE 4321
+EXPOSE 4870

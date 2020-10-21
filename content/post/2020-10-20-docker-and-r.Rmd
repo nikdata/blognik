@@ -1,19 +1,56 @@
 ---
-title: docker and R
+title: Docker and R - A Magic Combo
 author: Nik Agarwal
 date: '2020-10-20'
-slug: []
+slug: [docker-and-r-a-magic-combo]
 categories: []
-tags: []
-description: ''
-topics: []
+tags: ["docker"]
+draft: true
 ---
 
 Things to talk about:
 
 - Benefits
+  - reproducibility
+  - consistent 'experience'
+  - need to think about what you want installed (not a VM)
+  - disadvantages: image size; building takes time, libraries can take a while to download & install
 - Shoutout
+  - [Rahul](https://rsangole.netlify.app/post/2020/10/10/reproducible-work-in-r/)
+  - MRAN vs. Package Manager from RStudio
+  - binary vs. source
 - Dockerfile
+  - [My Dockerfile](https://github.com/nikdata/blognik/blob/master/docker/Dockerfile)
 - Dive into Dockerfile components
+  - The "meta" data
+  - Installing the Linux libraries
+  - Installing the R libraries
+  - Installing hugo
 - shell commands
+  - build, run, stop
+  - how to run on Mac
 - closing thoughts
+- References
+  1. https://github.com/rocker-org/rocker-versioned2
+  2. https://www.garrickadenbuie.com/blog/blogdown-netlify-new-post-workflow/
+  3. https://medium.com/@skyetetra/r-docker-faster-28e13a6d241d
+  4. https://github.com/eddelbuettel/littler/blob/master/inst/examples/install2.r
+  5. https://packagemanager.rstudio.com/client/#/repos/1/overview
+
+# Perks  
+
+My good friend (and former classmate) Rahul Sangole has a great [blog post](https://rsangole.netlify.app/post/2020/10/10/reproducible-work-in-r/) about setting up Docker & R and why he did it. It really boils down to a couple different things: reproducibility and having a consistent development environment. As a data scientist, I cannot stress the importance of reproducibility. If you can't reproduce your results/analyses (nor can anyone else), then suffice to say, that's a bad thing!
+
+# The Challenge
+
+Reproducibility in a data science project is key to having a defendable analysis and defendable models. Those are key elements to ensure your analyses and models are interpreted exactly how you want them to be interpreted. One of the challenges when developing analyses in R is the limited ability to have 'frozen' package versions. When you update packages in R, they update and you almost lose the older versions. This may not always be what you want as your project work may break. Rahul does a great job also pointing out how other folks on his team don't manage packages at the same cadence as other team members. One obvious solution is to have a **a reproducible and consistent development environment** that the whole team can work off of. This ensures that everyone is on the same 'page'. Plus, it ensures that if new packages are used, the whole team can collectively agree or disagree on its usage.
+
+# The Savior
+
+Docker is a great solution to this problem. Best of all, it simply consists of a small text file (called *Dockerfile* without any extension). In this file, you can define any and all steps you want done. A Docker file is then compiled into an image and a running image is found within a container. What makes Docker really cool is that it has all the software you need and expect every single time you run it. It won't add or delete anything without your explicit instruction.
+
+Docker is NOT a virtual machine (VM). It doesn't necessairly have a complete OS with independent memory managment from your computer. Whenever a docker container shuts down, if the work wasn't saved in a perpetual memory location, your work is lost. And with Docker, you only install what you need for your project work - you don't want to recreate your own machine.
+
+# The Docker Pain
+
+Docker is a great solution, however, it does have its major drawbacks. It 
