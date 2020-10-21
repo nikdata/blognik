@@ -85,6 +85,8 @@ RUN install2.r -r https://packagemanager.rstudio.com/all/__linux__/focal/latest 
         htmlwidgets \
         kableExtra
 
+# Copy over my RStudio Preferences
+COPY rstudio-prefs.json /etc/rstudio/
 
 # Install hugo
 WORKDIR /home/rstudio/bin/
