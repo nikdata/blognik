@@ -5,7 +5,7 @@ date: '2020-10-20'
 slug: [docker-and-r-a-magic-combo]
 categories: []
 tags: ["docker"]
-draft: true
+draft: false
 ---
 
 My good friend (and former classmate) Rahul Sangole has a great [blog post](https://rsangole.netlify.app/post/2020/10/10/reproducible-work-in-r/) about setting up Docker & R and why he did it. It really boils down to a couple different things: reproducibility and having a consistent development environment. As a data scientist, I cannot stress the importance of reproducibility. If you can't reproduce your results/analyses (nor can anyone else), then suffice to say, that's a bad thing!
