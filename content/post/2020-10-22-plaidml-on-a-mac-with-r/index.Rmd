@@ -57,4 +57,4 @@ If you're still reading, thank you! I created my own [tutorial](https://github.c
 
 - Whenever I see a tutorial for TensorFlow, I just substitute PlaidML and I can get it to work just fine.
 
-In closing, I ended my job hunt with three offers. It was a great feeling and what I found absolutely rewarding was the fact that all three organizations agreed with my perspective that deep learning isn't always the answer. Best of all, I can use my MacBook Pro with an AMD GPU and still expect comparable resuts and a rewarding experience.
+In closing, I ended my job hunt with three offers. It was a great feeling and what I found absolutely rewarding was the fact that all three organizations agreed with my perspective that deep learning isn't always the answer. Best of all, I can use my MacBook Pro with an AMD GPU and still expect comparable results and a rewarding experience.
