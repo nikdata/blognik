@@ -1,0 +1,60 @@
+---
+title: PlaidML on a Mac with R
+author: Nik Agarwal
+date: '2020-10-22'
+slug: []
+categories:
+  - R
+tags:
+  - deep learning
+description: ''
+topics: []
+---
+
+# Let me start from the beginning
+
+Prior to the whole Covid-19 pandemic, I was actively looking for a new opportunity. One of the first interviews I had (it went terrible from both sides), I was told that I was "classically" trained data scientist. When I asked the interviewer what he meant by that, his explanation was fairly clear: "You don't have experience with Deep Learning and your experiences thus far are only with simple machine learning techniques." During the follow-up, I surmised that the organization didn't really care for my background - they just wanted someone who can come in, write code for deep learning, and move on. Not really a company I wanted to work for. However, when I thought more about that interview, I was quite upset with myself.
+
+When I was looking through job postings, many of them asked for experience with TensorFlow and other deep learning methods. I was dismayed by two things:
+
+1. I didn't know deep learning as it wasn't used much at my then current employer
+2. How these companies knew that deep learning was the only solution to whatever problems they were trying to solve
+
+In hindsight (which is *always* 20/20), terms like 'TensorFlow' and 'deep learning' are fashionable and 'hot'. However, I realized early on that I needed to learn and apply deep learning. I needed to know how the algorithms work and why people think they're *magic*.
+
+My good friend [Rahul](https://rsangole.netlify.app) helped me to understand how he approached/taught himself deep learning. That's how I found out that I 'needed'^[At the time, I was convinced that deep learning could only be done with a GPU] a video card and Rahul had an nVidia! To my dismay, I knew that my MacBook Pro was incompatible with nVidia GPUs. And I also wasn't aware of solutions like Google CoLab that enable you to use GPUs for free (granted it's limited and I dislike the notebook format very much - but I digress). From [Apple's own support doc](https://support.apple.com/en-us/HT208544), I gathered that I could only use and AMD GPU. But, AMD GPUs aren't on the [compatibility list](https://www.tensorflow.org/install/gpu) for TensorFlow. So what now?
+
+While browsing my Twitter feed and Reddit, I came across a project called [PlaidML](https://github.com/plaidml/plaidml). And PlaidML promised to play nice with AMD GPUs!
+
+My lovely wife was super supportive of my intent on finding a new opportunity and when we talked about why I was struggling^[Job hunting sucks. It's draining mentally and it's easy to lose hope!], she made a mental note (I think) to herself to get my what I needed to succeed. For my birthday, she got me an external GPU enclosure, an AMD GPU, and the book [Deep Learning with R](https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X). So now I had everything, I thought.
+
+# Why are tutorials hard to find?
+
+While the book is really good, there are two things that I felt were missing:
+
+1. simple tutorials on simple datasets
+2. limited tutorials on using functional vs. sequential API
+
+What I mean by simple tutorial is a tutorial that walks me through simple datasets^[Here's an [example](https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-02-11) of a simple dataset] where we know "classical" machine learning models would work just fine. My own searches showed that many tutorials on deep learning were focused on image recognition/classification and text analytics. While those are great use cases, they weren't the best for me. What I was really looking for was a tutorial that goes step by step in simple and easy to follow steps. Alas, I couldn't find a tutorial that was using PlaidML and an easy dataset.
+
+Guess I have to make my own.
+
+# My Own Tutorial
+
+If you're still reading, thank you! I created my own [tutorial](https://github.com/nikdata/hotel-modeling) using the Hotels dataset (see footnotes below) and I use both the PlaidML framework and the functional API.
+
+# To Summarize, Here's What I Learned
+
+- PlaidML is an alternative framework to TensorFlow. They have many of the same methodologies, but it is not TensorFlow. As such, you cannot expect the same exact results. However, you may expect comparable performance.
+
+- {keras} is basically a wrapper around TensorFlow. Keras is basically "converting" the Keras syntax into the equivalent syntax for TensorFlow. 
+
+- {keras} for R also enables you to use PlaidML as the backend and does the conversions on the fly.
+
+- Deep learning is NOT a *magic* bullet. Rather, it's another tool that helps. My approach has been to start with "classical" methods such as random forest, linear regression, etc. and then move onto increasingly complex models. The best model is NOT always the one with the best accuracy or minimal error. You have to balance the business objectives and the end goal.
+
+- Functional vs Sequential API for TensorFlow (or PlaidML) is not a simple answer. There are pros and cons to both approaches. Often, the sequential approach is easier to work with initially - as long as you don't have to reuse a variety of intermediate steps.
+
+- Whenever I see a tutorial for TensorFlow, I just substitute PlaidML and I can get it to work just fine.
+
+In closing, I ended my job hunt with three offers. It was a great feeling and what I found absolutely rewarding was the fact that all three organizations agreed with my perspective that deep learning isn't always the answer. Best of all, I can use my MacBook Pro with an AMD GPU and still expect comparable resuts and a rewarding experience.
