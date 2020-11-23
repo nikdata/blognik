@@ -1,0 +1,64 @@
+---
+title: My First R Production Models
+author: Nik Agarwal
+date: '2020-11-22'
+slug: [my-first-r-production-models]
+categories:
+  - R
+tags: []
+description: ''
+topics: []
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p>In my past life, I did not have the opportunity to deploy a machine learning (ML) model and I was ecstatic to have the opportunity to do so at MakuSafe. It also helped that I am my own data science team and can make the call as to when a model is ready to be deployed. Life in a start-up is quite different from a Fortune 500 company; it’s filled with innovating quickly and executing swiftly.</p>
+<p>I’m pleased to say that on November 11, 2020, I was able to implement not one, not two, but THREE distinct models into production. And the icing on top was that all essential work was done in R!</p>
+<div id="so-what-do-these-models-do" class="section level2">
+<h2>So What Do These Models Do?</h2>
+<p>The three different models do the following:</p>
+<ul>
+<li>identifying if a subject has slipped, tripped, or fell</li>
+<li>identifying if a subject has experienced repetitive motion</li>
+<li>identifying if a subject has pulled/pushed an object</li>
+</ul>
+<p>While I am proficient in both Python and R, I’ve always found a stronger affinity for coding in R due to several packages that make coding fun and easier - as compared to Python. I’m definitely not advocating that one language is better than other. Far from it! Rather, I just prefer to code in R and use RStudio as my preferred IDE (which can also be used for Python!).</p>
+<p>Last year, I had the privilege of attending a few conferences (related to stats &amp; machine learning) across the US and one of the most popular statements I kept hearing was the R cannot be used for production use and Python was way better. So in my job, I took it upon myself to prove that R could be used in a production setting.</p>
+<p>And I proved just that!</p>
+</div>
+<div id="how-i-did-it-at-a-very-high-level" class="section level2">
+<h2>How I did it (at a very high level)</h2>
+<p>Believe it or not, my overall methodology (in terms of R packages) was not very complex. It essentially consisted of the following 5 steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Data wrangling &amp; analysis with {tidyverse}</p></li>
+<li><p>Data modeling with {tidymodels} &amp; the associated packages for models such as:</p>
+<ul>
+<li>random forest: {ranger}</li>
+<li>support vector machines: {e1071}</li>
+<li>deep learning: {keras}, {reticulate}</li>
+<li>xgboost: {xgboost}</li>
+</ul></li>
+<li><p>Develop package &amp; create bundle</p>
+<ul>
+<li>this is a key step</li>
+</ul></li>
+<li><p>{plumber} to generate APIs to interact with R functions within package</p></li>
+<li><p>Deploy via Docker</p></li>
+</ol>
+</div>
+<div id="lesson-learned-creating-a-package-is-key" class="section level2">
+<h2>Lesson Learned: Creating a Package is Key</h2>
+<p>By creating an internal package (i.e., not releasing to CRAN), I was able to create all of the necessary functions and the appropriate documentation in one bundle. This enables reliable documentation at the source and not having to create another documentation on another system (thus increasing the amount of maintenance required from me).</p>
+<p>Deploying the package via Docker enables me to keep the models up to date with minimal post-modeling work. For instance, if I need to update a model, I simply have to commit an updated package bundle to the specific git repo and an automated workflow will kick off and tell the Docker image to use the newer package. Internally, we’ll keep track which model version created each prediction.</p>
+</div>
+<div id="lesson-learned-working-with-dev-team-early-on-prevented-many-issues" class="section level2">
+<h2>Lesson Learned: Working with Dev team early on prevented many issues</h2>
+<p>In order for my plumber APIs to be effective, I worked with the dev team members early on to understand how and what information will be sent to my models. This ensured that I built in the appropriate steps to handle errors and transformations so that my models could run error-free. Without this interaction early on, I could not have understood how or what my API needed to do. This is also how I learned that Docker containers would be the most prudent way to have a stable, consistent, and predictable environment for my APIs to work correctly. Furthermore, I knew exactly what the expected outputs would need to be and optimized my code to run quickly &amp; efficiently. In the end, once data are received by my API, the outputs are made available in less than 300 milliseconds - which is more than acceptable for our business needs.</p>
+</div>
+<div id="r-can-be-used-for-production" class="section level2">
+<h2>R can be used for production</h2>
+<p>Anyone that says that R cannot be used in a production setting doesn’t really understand how or why. I’m not arguing that R models are the best to use, but they can be implemented. In fact, <a href="https://jnolis.com">Jacqueline Nolis</a> from T-Mobile and her team were able to deploy a <a href="https://github.com/tmobile/r-tensorflow-api">tensorflow model</a> using R &amp; Docker. Now that is awesome!</p>
+</div>
