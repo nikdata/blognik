@@ -1,0 +1,78 @@
+---
+title: Introducing {ialiquor}
+author: Nik Agarwal
+date: "2020-12-07"
+slug: []
+categories:
+  - R
+tags:
+  - package
+  - package development
+  - CRAN
+description: 'My thoughts on the creation of my first CRAN package.'
+topics: []
+---
+
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p>I’m pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo &amp; vignettes:</p>
+<ul>
+<li>Package Repo: <a href="https://github.com/nikdata/ialiquor">https://github.com/nikdata/ialiquor</a></li>
+<li>Package Webpage: <a href="https://nikdata.github.io/ialiquor/index.html">https://nikdata.github.io/ialiquor/index.html</a></li>
+<li>Vignettes: <a href="https://nikdata.github.io/ialiquor/articles/">https://nikdata.github.io/ialiquor/articles/</a></li>
+</ul>
+<p>I’ve tried to document as much as I could on the repo and the package website - so I’ll try not to repeat myself in this post.</p>
+<div id="about-ialiquor" class="section level2">
+<h2>About {ialiquor}</h2>
+<p>The {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:</p>
+<blockquote>
+<p>For grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.</p>
+</blockquote>
+<p>In plain English, this means that Class E is talking about hard liquor (excluding wine and beer).</p>
+</div>
+<div id="purpose" class="section level2">
+<h2>Purpose</h2>
+<p>I really had two goals with this package:</p>
+<ul>
+<li>learn how to create a dataset only package</li>
+<li>try to publish on CRAN</li>
+</ul>
+<p>Needless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN.</p>
+<div id="dataset-only" class="section level3">
+<h3>Dataset only?</h3>
+<p>It will help to know that the dataset (found <a href="https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy">here</a>) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What’s really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).</p>
+<p>Overall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that’s where I decided to trim it to no earlier than 2015.</p>
+<p>In order to create the dataset, I simply had to create a query using <a href="https://dev.socrata.com/docs/queries/">SODA</a>. This format essentially allows you to construct a query onto the URL of the dataset. Although the <a href="https://github.com/Chicago/RSocrata">{RSocrata}</a> package exists, I found it to be pretty poor<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> in helping construct a query (unlike the sodapy library for Python).</p>
+<p>With all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that.</p>
+</div>
+<div id="publishing-on-cran" class="section level3">
+<h3>Publishing on CRAN</h3>
+<p>I’ve attended several RStudio conferences over years and one common theme I’ve heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the ‘daunting’ part was the wait time from when I submitted the package to when I received an email saying it “was on its way to CRAN”. Two things really helped me become a bit more comfortable with the process:</p>
+<ul>
+<li>Hadley Wickham’s (and Jenny Bryan’s) book “<a href="https://r-pkgs.org">R Packages</a>”</li>
+<li><a href="https://ramikrispin.github.io">Rami Krispin</a> offering a quick step-by-step approach</li>
+</ul>
+<p>To summarize my approach, here’s what I did:</p>
+<ol style="list-style-type: decimal">
+<li>Use the ‘check’ function in RStudio IDE (under the Build tab) frequently</li>
+<li>Make sure there are 0 errors, 0 warnings/caution, 0 notes</li>
+<li>Complete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo</li>
+<li>use the <code>check_win_devel()</code> and <code>check_win_release()</code> functions from {devtools}</li>
+<li>Make sure the log outputs from both of those function calls also has 0 errors, warnings, notes</li>
+<li>If notes do come up and cannot be resolved or are not important, document it under file called <code>cran-comments.md</code></li>
+<li>use <code>devtools::submit_cran()</code> to submit</li>
+</ol>
+<p>Many of those steps are in Hadley’s book. Step 4 was something that Rami had mentioned to me (and super useful). Since I’m on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN’s auto-checks showed a note about a problematic URL address. I didn’t update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN’s auto check could access. I don’t know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.</p>
+<p>One last note I’d like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?</p>
+<p>If you do use the {ialiquor} package, I’d love to hear more about it. If you find issues, please open an issue on the repo.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>the first nuance I learned<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>I’m not really ‘bashing’ on this package, but I feel it’s not very ‘friendly’ to users who are not as familiar with SODA SQL<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
