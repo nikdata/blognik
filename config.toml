@@ -5,7 +5,7 @@ theme = "blackburn"
 author = "Nik Agarwal"
 copyright = "&copy; 2020. Nikhil Agarwal."
 canonifyurls = true
-paginate = 10
+paginate = 5
 
 [indexes]
   tag = "tags"
@@ -19,7 +19,7 @@ paginate = 10
   # disqus = "Your Disqus shortname"
   # CSS name for highlight.js
   highlightjs = "agate"
-  dateFormat = "02 Jan 2006, 15:04"
+  dateFormat = "02 Jan 2006"
 
 [menu]
   # Shown in the side menu.
