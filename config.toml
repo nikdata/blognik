@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "{randomNik}"
 theme = "blackburn"
 author = "Nik Agarwal"
-copyright = "&copy; 2020. Nikhil Agarwal."
+copyright = "&copy; 2018-2020. Nikhil Agarwal."
 canonifyurls = true
 paginate = 5
 
