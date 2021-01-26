@@ -1,0 +1,51 @@
+---
+title: RStudio 1.4 is a Game Changer
+author: Nik Agarwal
+date: '2021-01-26'
+slug: []
+categories:
+  - R
+tags:
+  - rstats
+  - python
+description: ''
+topics: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>RStudio 1.4 was <a href="https://blog.rstudio.com/2021/01/19/announcing-rstudio-1-4/">released</a> in early January (just before the 2021 RStudio Global conference) and it really is a game changer for me and, dare I say, other data scientists!</p>
+<p>Perhaps the most significant update is the ability to display Python objects right in the Environment tab of the RStudio IDE (see below):</p>
+<p><img src='img/screenshot1.png' width=400></p>
+<div id="so-why-is-this-a-big-deal" class="section level3">
+<h3>So why is this a big deal?</h3>
+<p>This new RStudio update is major news since I can now leverage the best of both worlds in one IDE far more easily. Let me list it out:</p>
+<ul>
+<li>I can use {reticulate} to execute code in Python using R syntax - available prior to RStudio 1.4</li>
+<li>I can run .py files (Python scripts) within RStudio and not have to use VSCode (my second favorite text-editor/IDE)</li>
+</ul>
+</div>
+<div id="heres-where-im-coming-from" class="section level3">
+<h3>Here’s where I’m coming from</h3>
+<p>In my current role, I code in both Python and R and have to use different IDEs (VSCode and RStudio respectively). From my experience, I find certain things to be easier to do in Python and many other things far more easier to do in R. I have to say that matplotlib is by far the WORST Python library I’ve ever used<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. On the other hand, {ggplot2} is simply a gorgeous library that makes plotting exceptionally easy and fun. And let me tell you that data wrangling with {dplyr} is far more intuitive than pandas<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. However, where Python really shines is the sklearn library. What I really enjoy about the sklearn library is the fact that it can do parallel processing right out of the box without me having to load (or figure out) what other libraries I need. Alas, the syntax for {tidymodels} is far more intuitive.</p>
+</div>
+<div id="the-game-changing-fix" class="section level3">
+<h3>The game changing fix</h3>
+<p>Prior to RStudio 1.4, it was kind of a pain to use {reticulate} or run Python scripts. The biggest challenge was not really being able to see what Python objects were loaded into memory if running a Python script. Furthermore, it was annoying (to me) to have to define the virtual environment (or conda environment) to use with {reticulate}<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Now you can just define the path to your favored virtual environment right in the Global Options menu:</p>
+<p><img src='img/virtualenv-option.png' width=400></p>
+<p>By defining the virutal environment path, running {reticulate} or Python scripts is far more easier!</p>
+</div>
+<div id="how-im-using-it" class="section level3">
+<h3>How I’m Using It</h3>
+<p>Since its release, I’ve been fervently using RStudio as my defacto IDE for both R and Python scripts. I’m still not letting go of VSCode; that software has quite a bit of flexibility beyond just being an IDE. However, with the ability of running Python scripts AND seeing the objects in the Environment tab, it makes my adventures in Data Science at work far more productive. Also, this new version has encouraged me to revisit {reticulate}. My plan, going forward, is to integrate both R and Python functions into the same script so I can, basically, take advantage of both languages and be far more productive<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>It’s my opinion. Don’t @ me<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Why does pandas have more than 1 way to do things? The entire syntax in pandas is ugly and hard to read<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>you’d have to use <code>reticulate::use_virtualenv(&lt;path&gt;)</code> prior to loading any Python objects into R<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>I don’t have to bounce between 2 different IDEs anymore! YAY!<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
