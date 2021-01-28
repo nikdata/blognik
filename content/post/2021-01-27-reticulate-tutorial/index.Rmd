@@ -14,32 +14,42 @@ topics: []
 
 With the recent release of [RStudio 1.4](https://blog.rstudio.com/2021/01/19/announcing-rstudio-1-4/), I've taken a new look at coding in Python using the RStudio IDE and also using Python libraries through {reticulate}.
 
-The {reticulate} package is a clever package that enables you to 'store' Python libraries and 'call' Python functions using familiar R syntax. My daily workflow consists of analyzing data through R and with the power of the {tidyverse}, data wrangling and analysis is superior to that of Pandas and Matplotlib on Python. However, I have found that Scikit-Learn on Python is fairly robust machine learning package as compared to the various packages available through {tidymodels}.
+The {reticulate} package is a clever package that enables you to 'store' Python libraries and 'call' Python functions using familiar R syntax. My daily workflow consists of wrangling & analyzing data with R. Lately, however, I've found that the Scikit-Learn library in Python has a much better ability to parallelize machine learning more easily than any other package in R. In a nutshell, I find that parallelizaton of machine learning routines in R is heavily dependent on the package itself. Scikit-Learn is essentially an 'all-in-one' solution for model development, but it is not the most intuitive to use (as compared to using {tidymodels}).
 
-Perhaps the most important benefit (to me at least) about Scikit-Learn is its innate ability to use parallelization (i.e., multi-core processing) to build a variety of models without the need to [load additional libraries](https://tune.tidymodels.org/articles/extras/optimizations.html). In R, I find that many algorithms aren't as intuitive in leveraging all available cores. And this is key when I'm building a model and I want to throw as much computing power as my machine can muster.
+Here's a high level workflow for me:
+
+- R
+  - data acquisition from database with
+  - data wrangling and exploratory data analysis
+  - 'tidy' and clean data exported to CSV
+
+- Python
+  - data preprocessing (e.g., balancing, train/test split)
+  - data modeling (hypertuning) with Scikit-Learn
+  - model scoring
+  - note down best model parameters
+
+- R
+  - Apply best parameters to the appropriate model using the best package for the model (e.g., {ranger} for Random Forest)
+  - Construct API with {plumber}
+  - Deploy to production
+
+This current workflow 'forces' me to rely on two different IDEs: RStudio for R and VSCode for Python. Prior to RStudio 1.4, it was difficult for me to know what objects were loaded into memory in the Environment tab as well as running Python scripts natively.
+
+While {reticulate} was great to use before RStudio 1.4, I still had to debug in VSCode any errors found with Python calls. Now with RStudio 1.4, I can do it all in one IDE.
 
 ## TL;DR
 
-This is a LONG post. You can find all the code used on my [GitHub as a gist](https://gist.github.com/nikdata/ce4c72550f184e6bc20d6c98475e5a5d).
+This is a LONG post. You can find all the code used on my [GitHub as a gist](https://gist.github.com/nikdata/ce4c72550f184e6bc20d6c98475e5a5d). This code will walk you through how I use {reticulate} effectively (i.e., combining the best of R and Python in one script).
 
-## My tutorial on {reticulate}
-
-There is a tremendous amount of information on the web about {reticulate}. While that information is great, I found that there are not many tutorials out there that really show off the power of leveraging the best of R and Python in one R script. My goal is to walk through a simple dataset leveraging the following:
-
-- {ggplot2} for graphics
-- {recipes} for preprocessing data
-- {reticulate} for using various Python libraries
-  - imblearn: resampling to balance data
-  - scikit-learn: machine learning
-  
-### Pre-Requisites
+## Pre-Requisites
 
 - RStudio 1.4
 - {tidyverse}
 - {reticulate}
 - {palmerpenguins}
 - Python 3.8 or higher with virtual environments
-- working knowledge of Python
+- working knowledge of Python (I don't talk much about Python decoding in this tutorial)
 
 For this tutorial, I am assuming that you have already configured a particular virtual environment within the Global Options (or Project Options) menu.
 
@@ -90,7 +100,7 @@ df_pgs <- palmerpenguins::penguins
 dplyr::glimpse(df_pgs)
 ```
 
-Luckily, the information we want is encoded correctly. For instance, the categorical columns are already encoded as factors. However, we need to remember that Scikit-Learn does not accept character values. Rather, these must be encoded as numerical values (either ordinally, arbitrarily, dummy-encoded, or one-hot encoding). And we'll do that when we get to our recipes.
+The data are encoded correctly if we wanted to build our model in R. For instance, the categorical columns are already encoded as factors. However, we need to remember that Scikit-Learn does not accept character values. Rather, these must be encoded as numerical values (either ordinally, dummy-encoded, or one-hot encoding). And we'll do that when we get building a 'recipe'.
 
 ### Data Exploration - Missing Values
 
@@ -212,7 +222,7 @@ pg_test <- rsample::testing(pg_split)
 
 #### Recipes!!!
 
-Another intuitive tool within R is the ability to use the {recipes} package. Remarkably, this package enables you to create a step-by-step instruction on what to process for any dataframe that's passed through it. While you can do similar things with Scikit-Learn, it's just not as clean/crisp looking nor as intuitive. Don't bother disputing me since you won't convince me!
+Another intuitive tool within R is the ability to use the {recipes} package. Remarkably, this package enables you to create a step-by-step instruction on what to process for any dataframe that's passed through it. While you can do similar things with Scikit-Learn, it's just not as clean/crisp looking nor as intuitive. Don't bother disputing me since you won't convince me :) !
 
 ```{r define_recipe, message=FALSE}
 base_recipe <- recipes::recipe(species ~ ., data = pg_train) %>%
@@ -317,7 +327,7 @@ cln_bal %>%
 
 Now that looks amazing (and balanced)!
 
-### Model Development
+### Model Development & Scoring
 
 To keep the overall post somewhat short (I'm already failing), I'll only build a hyperparameter tuned Random Forest model. Nothing fancy, but just something to show how scikit-learn can be used with {reticulate}.
 

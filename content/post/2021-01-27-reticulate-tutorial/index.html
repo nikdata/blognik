@@ -16,38 +16,48 @@ topics: []
 
 
 <p>With the recent release of <a href="https://blog.rstudio.com/2021/01/19/announcing-rstudio-1-4/">RStudio 1.4</a>, I’ve taken a new look at coding in Python using the RStudio IDE and also using Python libraries through {reticulate}.</p>
-<p>The {reticulate} package is a clever package that enables you to ‘store’ Python libraries and ‘call’ Python functions using familiar R syntax. My daily workflow consists of analyzing data through R and with the power of the {tidyverse}, data wrangling and analysis is superior to that of Pandas and Matplotlib on Python. However, I have found that Scikit-Learn on Python is fairly robust machine learning package as compared to the various packages available through {tidymodels}.</p>
-<p>Perhaps the most important benefit (to me at least) about Scikit-Learn is its innate ability to use parallelization (i.e., multi-core processing) to build a variety of models without the need to <a href="https://tune.tidymodels.org/articles/extras/optimizations.html">load additional libraries</a>. In R, I find that many algorithms aren’t as intuitive in leveraging all available cores. And this is key when I’m building a model and I want to throw as much computing power as my machine can muster.</p>
-<div id="tldr" class="section level2">
-<h2>TL;DR</h2>
-<p>This is a LONG post. You can find all the code used on my <a href="https://gist.github.com/nikdata/ce4c72550f184e6bc20d6c98475e5a5d">GitHub as a gist</a>.</p>
-</div>
-<div id="my-tutorial-on-reticulate" class="section level2">
-<h2>My tutorial on {reticulate}</h2>
-<p>There is a tremendous amount of information on the web about {reticulate}. While that information is great, I found that there are not many tutorials out there that really show off the power of leveraging the best of R and Python in one R script. My goal is to walk through a simple dataset leveraging the following:</p>
+<p>The {reticulate} package is a clever package that enables you to ‘store’ Python libraries and ‘call’ Python functions using familiar R syntax. My daily workflow consists of wrangling &amp; analyzing data with R. Lately, however, I’ve found that the Scikit-Learn library in Python has a much better ability to parallelize machine learning more easily than any other package in R. In a nutshell, I find that parallelizaton of machine learning routines in R is heavily dependent on the package itself. Scikit-Learn is essentially an ‘all-in-one’ solution for model development, but it is not the most intuitive to use (as compared to using {tidymodels}).</p>
+<p>Here’s a high level workflow for me:</p>
 <ul>
-<li>{ggplot2} for graphics</li>
-<li>{recipes} for preprocessing data</li>
-<li>{reticulate} for using various Python libraries
+<li>R
 <ul>
-<li>imblearn: resampling to balance data</li>
-<li>scikit-learn: machine learning</li>
+<li>data acquisition from database with</li>
+<li>data wrangling and exploratory data analysis</li>
+<li>‘tidy’ and clean data exported to CSV</li>
+</ul></li>
+<li>Python
+<ul>
+<li>data preprocessing (e.g., balancing, train/test split)</li>
+<li>data modeling (hypertuning) with Scikit-Learn</li>
+<li>model scoring</li>
+<li>note down best model parameters</li>
+</ul></li>
+<li>R
+<ul>
+<li>Apply best parameters to the appropriate model using the best package for the model (e.g., {ranger} for Random Forest)</li>
+<li>Construct API with {plumber}</li>
+<li>Deploy to production</li>
 </ul></li>
 </ul>
-<div id="pre-requisites" class="section level3">
-<h3>Pre-Requisites</h3>
+<p>This current workflow ‘forces’ me to rely on two different IDEs: RStudio for R and VSCode for Python. Prior to RStudio 1.4, it was difficult for me to know what objects were loaded into memory in the Environment tab as well as running Python scripts natively.</p>
+<p>While {reticulate} was great to use before RStudio 1.4, I still had to debug in VSCode any errors found with Python calls. Now with RStudio 1.4, I can do it all in one IDE.</p>
+<div id="tldr" class="section level2">
+<h2>TL;DR</h2>
+<p>This is a LONG post. You can find all the code used on my <a href="https://gist.github.com/nikdata/ce4c72550f184e6bc20d6c98475e5a5d">GitHub as a gist</a>. This code will walk you through how I use {reticulate} effectively (i.e., combining the best of R and Python in one script).</p>
+</div>
+<div id="pre-requisites" class="section level2">
+<h2>Pre-Requisites</h2>
 <ul>
 <li>RStudio 1.4</li>
 <li>{tidyverse}</li>
 <li>{reticulate}</li>
 <li>{palmerpenguins}</li>
 <li>Python 3.8 or higher with virtual environments</li>
-<li>working knowledge of Python</li>
+<li>working knowledge of Python (I don’t talk much about Python decoding in this tutorial)</li>
 </ul>
 <p>For this tutorial, I am assuming that you have already configured a particular virtual environment within the Global Options (or Project Options) menu.</p>
 <p><img src='img/python-configured.png' width=400></p>
 <p>One perk of using RStudio 1.4 is the fact that you no longer have to define the virtual environment in your R script once it is defined in the Global Options menu. However, you will need to do so if you wish to use a different virtual environment than the one in your Global Options (or Project Options) menu.</p>
-</div>
 <div id="penguins" class="section level3">
 <h3>Penguins!!</h3>
 <p>As you may have guessed, I’ll be using the {palmerpenguins} package for the underlying data. The dataset within this package is far newer than the venerable iris dataset.</p>
@@ -89,7 +99,7 @@ dplyr::glimpse(df_pgs)</code></pre>
 ## $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475,…
 ## $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, mal…
 ## $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 200…</code></pre>
-<p>Luckily, the information we want is encoded correctly. For instance, the categorical columns are already encoded as factors. However, we need to remember that Scikit-Learn does not accept character values. Rather, these must be encoded as numerical values (either ordinally, arbitrarily, dummy-encoded, or one-hot encoding). And we’ll do that when we get to our recipes.</p>
+<p>The data are encoded correctly if we wanted to build our model in R. For instance, the categorical columns are already encoded as factors. However, we need to remember that Scikit-Learn does not accept character values. Rather, these must be encoded as numerical values (either ordinally, dummy-encoded, or one-hot encoding). And we’ll do that when we get building a ‘recipe’.</p>
 <div id="data-exploration---missing-values" class="section level3">
 <h3>Data Exploration - Missing Values</h3>
 <p>One of the first things I like to do is identify if any columns have missing values.</p>
@@ -209,7 +219,7 @@ pg_train &lt;- rsample::training(pg_split)
 pg_test &lt;- rsample::testing(pg_split)</code></pre>
 <div id="recipes" class="section level4">
 <h4>Recipes!!!</h4>
-<p>Another intuitive tool within R is the ability to use the {recipes} package. Remarkably, this package enables you to create a step-by-step instruction on what to process for any dataframe that’s passed through it. While you can do similar things with Scikit-Learn, it’s just not as clean/crisp looking nor as intuitive. Don’t bother disputing me since you won’t convince me!</p>
+<p>Another intuitive tool within R is the ability to use the {recipes} package. Remarkably, this package enables you to create a step-by-step instruction on what to process for any dataframe that’s passed through it. While you can do similar things with Scikit-Learn, it’s just not as clean/crisp looking nor as intuitive. Don’t bother disputing me since you won’t convince me :) !</p>
 <pre class="r"><code>base_recipe &lt;- recipes::recipe(species ~ ., data = pg_train) %&gt;%
   recipes::step_mutate(tmp_species = species) %&gt;%
   recipes::step_meanimpute(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, id = &#39;impute_missing_continuous&#39;) %&gt;%
@@ -356,8 +366,8 @@ cln_bal &lt;- bind_cols(nb_resp, nb_pred)</code></pre>
 <p>Now that looks amazing (and balanced)!</p>
 </div>
 </div>
-<div id="model-development" class="section level3">
-<h3>Model Development</h3>
+<div id="model-development-scoring" class="section level3">
+<h3>Model Development &amp; Scoring</h3>
 <p>To keep the overall post somewhat short (I’m already failing), I’ll only build a hyperparameter tuned Random Forest model. Nothing fancy, but just something to show how scikit-learn can be used with {reticulate}.</p>
 <p>First up, we define the hyperparameter tuning grid.</p>
 <pre class="r"><code>param_grid &lt;- reticulate::dict(&#39;bootstrap&#39; = list(TRUE),
@@ -391,7 +401,7 @@ grid_search &lt;- sklearn_modelselection$GridSearchCV(estimator = rf_mdl,
 ## [1] TRUE
 ## 
 ## $max_depth
-## [1] 3
+## [1] 4
 ## 
 ## $max_features
 ## [1] 2
@@ -400,7 +410,7 @@ grid_search &lt;- sklearn_modelselection$GridSearchCV(estimator = rf_mdl,
 ## [1] 2
 ## 
 ## $n_estimators
-## [1] 500</code></pre>
+## [1] 250</code></pre>
 <p>From here on out, our process is simple:</p>
 <ul>
 <li>Make the predictions for the test dataset</li>
@@ -414,7 +424,7 @@ ypred_test &lt;- best_grid$predict(cln_test %&gt;% select(-island, -tmp_species,
 
 # score
 sklearn_metrics$accuracy_score(y_true = cln_test$species, y_pred = ypred_test)</code></pre>
-<pre><code>## [1] 0.9767442</code></pre>
+<pre><code>## [1] 0.9883721</code></pre>
 <p>And we get an accuracy of well over 98%. Not bad!</p>
 <p>I hope this brief tutorial helps you out! I’m a big fan of {reticulate} and I’ve been having tremendous fun using RStudio 1.4 to run my Python scripts natively along with R code.</p>
 </div>
