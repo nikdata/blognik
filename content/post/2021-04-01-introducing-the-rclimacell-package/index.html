@@ -1,0 +1,59 @@
+---
+title: Introducing the RClimacell Package
+author: Nik Agarwal
+date: '2021-04-01'
+slug: []
+categories: []
+tags: []
+summary: "A brief introduction of {RClimacell}, my new package that leverages the ClimaCell API for retrieving weather data"
+ShowToc: false
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>I’m pleased to announce the {RClimacell} package (granted it’s been out on CRAN for a few weeks now). This pacakge is exceptionally useful in retrieving weather data using the Climacell API. If you haven’t heard of Climacell, it’s a company out of Boston focused on hyper-local weather forecasting. Ever since the DarkSky API has <a href="https://blog.darksky.net">shut down</a>, many other companies have started to fill the void. One of the most attractive aspects of DarkSky was its “pay-as-you-go” pricing, which was really cool as you could use it as much as you want (within the limitations) and <strong>not</strong> have any recurring subscription fees (which I really disdain).</p>
+<p>Climacell isn’t necessarily the most friendly towards developers, in my opinion. Over the last few weeks, I’ve seen their pricing become a bit more stingy and not very friendly. For example, in late 2020, they offered up to 1000 API calls per day, now it’s around 500. While that sounds great, it’s also hampered by the fact that you can only make 25 calls per hour. Debugging erroneous code is not fun if you hit that threshold. But I digress.</p>
+<p><a href="https://nikdata.github.io/RClimacell/">Package website</a></p>
+<p>I think the package website is really good at highlighting what can be done with this package. The key limitation is that it only leverages the Timelines Interface from Climacell as its the only way to get most of the data for free.</p>
+<p>Since the package makes extensive use the tidyverse lingo, it’s quite fun to use as well!</p>
+<pre class="r"><code>df_temp &lt;- RClimacell::climacell_core(
+  api_key = Sys.getenv(&#39;CLIMACELL_API&#39;),
+  lat = 41.8789,
+  long = 87.6359,
+  timestep = &#39;1m&#39;,
+  start_time = lubridate::now(),
+  end_time = lubridate::now() + lubridate::hours(6)
+)</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(dplyr)
+library(extrafont)
+
+df_temp %&gt;%
+  select(start_time, temp_c, temp_feel_c) %&gt;%
+  tidyr::pivot_longer(cols = temp_c:temp_feel_c) %&gt;%
+  ggplot(aes(x = start_time, y = value, color = name)) +
+  geom_line() +
+  labs(x = &#39;Time (UTC)&#39;,
+       y = &#39;Temperature (Celsius)&#39;,
+       color = &#39;Type&#39;,
+       title = &quot;Predicted Temperature by Time&quot;,
+       caption = &#39;Timestep of 1 minute&#39;
+  ) +
+  scale_color_discrete(labels = c(&#39;Predicted Temperature&#39;,&#39;Feels Like Temperature&#39;)) +
+  theme(plot.title = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey100&#39;),
+        plot.caption = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey60&#39;),
+        axis.title = element_text(family = &#39;Bahnschrift&#39;, color = &#39;grey100&#39;),
+        axis.text.x = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey70&#39;),
+        axis.text.y = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey70&#39;),
+        plot.background = element_rect(fill = &#39;grey10&#39;),
+        panel.background = element_blank(),
+        panel.grid.major = element_line(color = &#39;grey30&#39;, size = 0.2),
+        panel.grid.minor = element_line(color = &#39;grey30&#39;, size = 0.2),
+        legend.background =  element_rect(fill = &#39;grey20&#39;),
+        legend.key = element_blank(),
+        legend.title = element_text(family = &#39;Bahnschrift&#39;, color = &#39;grey80&#39;),
+        legend.text = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey90&#39;),
+        legend.position = c(0.87, 0.2)
+  )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
