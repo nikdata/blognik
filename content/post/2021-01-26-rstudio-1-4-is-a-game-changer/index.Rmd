@@ -10,6 +10,7 @@ tags:
   - python
 description: ''
 topics: []
+summary: "How RStudio 1.4 really ups your Data Science game"
 ---
 
 RStudio 1.4 was [released](https://blog.rstudio.com/2021/01/19/announcing-rstudio-1-4/) in early January (just before the 2021 RStudio Global conference) and it really is a game changer for me and, dare I say, other data scientists!

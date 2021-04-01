@@ -6,8 +6,10 @@ slug: tidy-correlations
 categories: []
 tags: ["correlations","rstats"]
 draft: false
+summary: "A short tutorial on correlations in a 'tidy' way"
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>When creating correlation matrices, one of the hardest things I find is the ability to read it easily. Here’s an example of a correlation table:</p>
@@ -21,14 +23,14 @@ z -0.08899377 -0.053432013  0.037343880  0.2181243  1.00000000</code></pre>
 <p>So how do we make this tidy-R (pun intended)? Here’s the full code before we dive in to the details (and the end results).</p>
 <pre class="r"><code># load library
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.1.1     ✔ purrr   0.3.2
-## ✔ tibble  2.1.1     ✔ dplyr   0.8.1
-## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
-## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ─────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.1.0     ✓ dplyr   1.0.5
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code># generate a dataframe
 
 sampledata &lt;- tibble(a = runif(n = 100, min = 101, max = 999),
@@ -40,8 +42,9 @@ sampledata &lt;- tibble(a = runif(n = 100, min = 101, max = 999),
 sample_cor &lt;- cor(sampledata) # note how this creates row labels
 
 sample_cor &lt;- as.tibble(sample_cor, rownames = &#39;variable&#39;) # save the row labels in their own column</code></pre>
-<pre><code>## Warning: `as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).
-## This warning is displayed once per session.</code></pre>
+<pre><code>## Warning: `as.tibble()` was deprecated in tibble 2.0.0.
+## Please use `as_tibble()` instead.
+## The signature and semantics have changed, see `?as_tibble`.</code></pre>
 <pre class="r"><code>sample_cor %&gt;%
   gather(key = &#39;var2&#39;, value = &#39;correlation&#39;, -variable) %&gt;%
   filter(variable != var2) %&gt;%
@@ -53,16 +56,16 @@ sample_cor &lt;- as.tibble(sample_cor, rownames = &#39;variable&#39;) # save the
 ## # Groups:   correlation [10]
 ##    variable var2  correlation abs_correlation
 ##    &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;           &lt;dbl&gt;
-##  1 x        b          0.169           0.169 
-##  2 y        x         -0.145           0.145 
-##  3 b        a         -0.130           0.130 
-##  4 z        b         -0.113           0.113 
-##  5 z        y          0.0742          0.0742
-##  6 z        x         -0.0686          0.0686
-##  7 z        a         -0.0320          0.0320
-##  8 x        a         -0.0303          0.0303
-##  9 y        b          0.0253          0.0253
-## 10 y        a          0.0100          0.0100</code></pre>
+##  1 y        x         0.185           0.185  
+##  2 y        b        -0.134           0.134  
+##  3 z        a        -0.118           0.118  
+##  4 x        b        -0.107           0.107  
+##  5 x        a        -0.0859          0.0859 
+##  6 z        x        -0.0840          0.0840 
+##  7 z        b         0.0569          0.0569 
+##  8 b        a        -0.0162          0.0162 
+##  9 z        y         0.0108          0.0108 
+## 10 y        a         0.00166         0.00166</code></pre>
 <p>So let’s go about decoding all of this sequentially.</p>
 <div id="code-explanation" class="section level2">
 <h2>Code Explanation</h2>

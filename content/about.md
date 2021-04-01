@@ -1,9 +1,9 @@
-+++
-title = "about me"
-date = "2020-05-06"
-sidemenu = "true"
-description = ""
-+++
+---
+title: "about me"
+date: ""
+ShowToc: false
+ShowReadingTime: false
+---
 
 I'm Nikhil Agarwal (Nik) and this is my blog for my random musings on life and data.
 

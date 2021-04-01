@@ -9,6 +9,7 @@ tags:
   - deep learning
 description: ''
 topics: []
+summary: "Deep Learning with R on macOS using PlaidML"
 ---
 
 # Let me start from the beginning

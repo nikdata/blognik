@@ -6,6 +6,7 @@ slug: tidy-correlations
 categories: []
 tags: ["correlations","rstats"]
 draft: false
+summary: "A short tutorial on correlations in a 'tidy' way"
 ---
 
 When creating correlation matrices, one of the hardest things I find is the ability to read it easily. Here's an example of a correlation table:
