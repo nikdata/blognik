@@ -1,5 +1,6 @@
 # mac extras
 \.DS_Store
+.DS_Store
 
 # RStudio extras
 .Rproj.user
@@ -8,4 +9,7 @@
 # Misc. Files & Folders
 archived_posts*
 archived_posts/
+
+# themes
+themes/PaperMod*
 
