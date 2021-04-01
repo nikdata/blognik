@@ -10,6 +10,7 @@ tags:
   - python
 description: ''
 topics: []
+summary: "A walkthrough on using {reticulate} to use the best of Python in R"
 ---
 
 With the recent release of [RStudio 1.4](https://blog.rstudio.com/2021/01/19/announcing-rstudio-1-4/), I've taken a new look at coding in Python using the RStudio IDE and also using Python libraries through {reticulate}.

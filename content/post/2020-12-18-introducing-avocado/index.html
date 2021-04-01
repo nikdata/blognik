@@ -11,14 +11,16 @@ tags:
   - CRAN
 description: ''
 topics: []
+summary: "My new package, {avocado}, is now on CRAN"
 ---
 
-<script src="index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>I’m pleased to share that my second package, {avocado} - version 0.1.0 - is now on CRAN. The {avocado} package consists of three different datasets that describe the weekly Hass Avocado sales in the contiguous US.</p>
 <ul>
 <li><a href="https://nikdata.github.io/avocado/">Package Website</a></li>
+<li><a href="https://nikdata.github.io/avocado/articles/">Vignettes</a></li>
 <li><a href="https://github.com/nikdata/avocado">Package Repo</a></li>
 <li>Data Source: <a href="https://hassavocadoboard.com">Hass Avocado Board</a></li>
 </ul>
@@ -42,7 +44,7 @@ topics: []
 <div id="continuous-integration" class="section level2">
 <h2>Continuous Integration</h2>
 <p>Perhaps the biggest benefit of CI platforms is the ability to have code tests run ‘in the background’ - especially when pull requests are made. The goal here is to ensure that potential bugs are found - enabling developer(s) to fix the issue prior to merging the code into production. While Hadley &amp; Jenny’s book talks about Travis CI, there are alternatives - such as GitHub Actions. All this was new to me (and still is) and I wanted to learn more about it. So I chose to go with GitHub Actions and proceeded to find out how I can leverage it with R.</p>
-<p>I chose not to go forward with Travis CI due to a <strong>MAJOR</strong> <a href="https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing">change</a> in their pricing policy. Effectively, they will only give free accounts up to 10,000 credits - which expire after one year. Once all the credits are used up (or expired), the user has to sign up for a paid account<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. As a hobbyist, I don’t want to spend more money than I have to. I was pleasantly surprised to see that GitHub offers 2,000 minutes of GitHub Actions free for private repositiories and unlimited minutes for public repositories.</p>
+<p>I chose not to go forward with Travis CI due to a <strong>MAJOR</strong> <a href="https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing">change</a> in their pricing policy. Effectively, they will only give free accounts up to 10,000 credits - which expire after one year. Once all the credits are used up (or expired), the user has to sign up for a paid account<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. As a hobbyist, I don’t want to spend more money than I have to. I was pleasantly surprised to see that GitHub offers 2,000 minutes of GitHub Actions free for private repositories and unlimited minutes for public repositories.</p>
 <p>Definitely a no brainer and time to move forward with GitHub Actions. And GitHub Actions <a href="https://ropenscilabs.github.io/actions_sandbox/">works with R</a>!</p>
 <p>The highly versatile {usethis} package has a great function, <code>use_github_action_check_standard()</code> that quickly &amp; easily implements the necessary files to initiate &amp; use GitHub Actions.</p>
 <p>What this does, in terms of R package development, is enables GitHub to fire up some virtual machines in the cloud, run R-CMD-CHECK on your package, and provide a ‘summary’ of the results. This is a great way to check if your package will work on platforms other than the one you are developing on. In my case, I develop R packages on a Mac - so if it works on my Mac, I can safely assume it’ll work on other similar Mac’s. However, I don’t have access to a Windows or a Linux machine to test my package - and that’s where GitHub Actions steps in.</p>

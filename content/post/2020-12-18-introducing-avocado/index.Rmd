@@ -1,7 +1,7 @@
 ---
 title: Introducing {avocado}
 author: Nik Agarwal
-date: "`r format(Sys.time(), '%Y-%m-%d')`"
+date: "2020-12-18"
 slug: introducing-avocado
 categories:
   - R
@@ -11,6 +11,7 @@ tags:
   - CRAN
 description: ''
 topics: []
+summary: "My new package, {avocado}, is now on CRAN"
 ---
 I'm pleased to share that my second package, {avocado} - version 0.1.0 - is now on CRAN. The {avocado} package consists of three different datasets that describe the weekly Hass Avocado sales in the contiguous US.
 

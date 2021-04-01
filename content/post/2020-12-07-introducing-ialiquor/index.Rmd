@@ -1,7 +1,7 @@
 ---
 title: Introducing {ialiquor}
 author: Nik Agarwal
-date: "`r format(Sys.time(), '%Y-%m-%d')`"
+date: "2020-12-07"
 slug: []
 categories:
   - R
@@ -11,6 +11,7 @@ tags:
   - CRAN
 description: 'My thoughts on the creation of my first CRAN package.'
 topics: []
+summary: "My first R package, {ialiquor} is now on CRAN"
 ---
 I'm pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo & vignettes:
 
