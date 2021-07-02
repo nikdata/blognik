@@ -7,7 +7,7 @@ ShowReadingTime: false
 
 I'm Nik Agarwal and this is my blog for my random musings on life and data.
 
-Currently, I'm a principal data scientist at [Makusafe](https://www.makusafe.com), where I focus on predictive analytics on motion & location classification with our wearable device. Prior to MakuSafe, I was a data scientist in varying roles at [John Deere](https://www.johndeere.com) focusing on machine & customer behavior modeling, market basket analysis, and anomaly detection on machine usage. Early on in my career, I was a manufacturing engineer focused on optimal assembly line work distribution/allocation along with process optimization.
+Currently, I'm a principal data scientist at [Makusafe](https://www.makusafe.com), where I lead the data modeling and  analytics projects for our wearable device. Prior to MakuSafe, I was a data scientist in varying roles at [John Deere](https://www.johndeere.com) focusing on machine & customer behavior modeling, market basket analysis, and anomaly detection on machine usage. Early on in my career, I was a manufacturing engineer focused on optimal assembly line work distribution/allocation along with process optimization.
 
 Outside of work, my interests include:
 - stats & data analysis
