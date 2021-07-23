@@ -1,0 +1,48 @@
+---
+title: Shiny Modules and the Bright Appeal
+author: Nik Agarwal
+date: '2021-07-22'
+slug: []
+categories:
+  - R
+tags:
+  - shiny
+---
+
+For a while now, I've been hearing quite a bit about [Shiny Modules](https://shiny.rstudio.com/articles/modules.html). In fact, an intriguing package - [{golem}](https://engineering-shiny.org/golem.html) - makes strong use of Shiny Modules. The concept of Shiny Modules is not necessarily new; it's been around for over a year! I never dove into Shiny Modules because when I first started learning more about it, I couldn't' wrap my head around a few things:
+
+- the purpose
+- the need
+- the advantages
+
+And to be fair, the answers to all three are well documented (see [here](https://emilyriederer.netlify.app/post/shiny-modules/) and [here](https://mastering-shiny.org/scaling-modules.html)).
+
+By no means am I an expert at Shiny Modules, but I think I've grasped enough to spell out a few things a bit more directly - to myself at least!
+
+## TL;DR
+
+Fundamentally, Shiny Modules are 'functions' that allow components to be reused without having to duplicate code. For instance, you can define a `SelectInput` block and then reuse it multiple times - without having to copy/paste the same code (with minor changes) over and over. Just like in a 'standard' function within R, you can define any type of inputs and also define what the outputs are (if any).
+
+The package {golem} is very similar to {usethis} in which it enables you to create a 'package' for your Shiny application. One of the biggest benefits of this approach is documentation. If you've ever composed and published an R package on CRAN, you'll undoubtedly be familiar with the extensive documentation that is required. {golem} has other major benefits too, but it is NOT a required package to use if you want to use Shiny Modules.
+
+## My Own Challenges
+
+I think Emily put it best when she wrote "If you already are an R user who likes to think and write functions and understand Shiny basics (i.e. the basics of reactivity come first no matter what), then modules for certain types of tasks (discussed at the end of this post) are an excellent way to up your game" on her [blog post](https://emilyriederer.netlify.app/post/shiny-modules/) about Shiny Modules.
+
+In my own words, I take this to mean that there are two major concepts you should know and be extremely comfortable with:
+
+1. functions. Without knowing functions or not being comfortable with them, Shiny Modules will be a complex idea to wrap your head around
+2. reactivity. This [concept](https://shiny.rstudio.com/articles/reactivity-overview.html) is core to Shiny and it is one that I'm not always good with. Loosely put, reactivity enables shiny applications to be more dynamic and 'reactive' to a user's input or actions (either based on active user input or not).
+
+## Here's what I Learned
+
+From my limited understanding, the **purpose** of Shiny Modules is to really help you make your Shiny application modular and scalable. And that happens just like a function. There are many **advantages** to Shiny Modules and, unfortunately, these advantages are heavily dependent on your **needs**. And that brings me to my last point - **need**. I think Shiny Modules are needed if you are developing a complex Shiny application. And a complex Shiny application does not necessarily mean it's hard to develop - rather, it could also mean an application that has many tabs or many different inputs. To me, Shiny Modules make sense when you have components that you will be reusing often. I like to think of these as user inputs such as drop-downs, radio buttons, output plots & tables, etc. 
+
+## Of Course I Wrote My Own Code
+
+While there are several tutorials on Shiny Modules, I found that almost all of them didn't really illustrate 'complex' ideas. For instance, many of them had an entire sidebar as a module - which didn't really make any sense to me as to why you'd want to do that. So I decided to make my own working code that does a couple of things:
+
+- each user input is a module
+- on a second NavBarPage, a module is reused
+- multiple dropdowns in which subsequent dropdowns depend on the user value on the previous dropdown
+

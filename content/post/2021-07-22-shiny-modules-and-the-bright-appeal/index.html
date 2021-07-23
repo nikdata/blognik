@@ -1,0 +1,31 @@
+---
+title: Shiny Modules and the Bright Appeal
+author: Nik Agarwal
+date: '2021-07-22'
+slug: []
+categories:
+  - R
+tags:
+  - shiny
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>For a while now, I’ve been hearing quite a bit about <a href="https://shiny.rstudio.com/articles/modules.html">Shiny Modules</a>. In fact, an intriguing package - <a href="https://engineering-shiny.org/golem.html">{golem}</a> - makes strong use of Shiny Modules. The concept of Shiny Modules is not necessarily new; it’s been around for over a year! I never dove into Shiny Modules because when I first started learning more about it, I couldn’t’ wrap my head around a few things:</p>
+<ul>
+<li>the purpose</li>
+<li>the need</li>
+<li>the advantages</li>
+</ul>
+<p>And to be fair, the answers to all three are well documented (see <a href="https://emilyriederer.netlify.app/post/shiny-modules/">here</a> and <a href="https://mastering-shiny.org/scaling-modules.html">here</a>).</p>
+<p>By no means am I an expert at Shiny Modules, but I think I’ve grasped enough to spell out a few things a bit more directly - to myself at least!</p>
+<div id="tldr" class="section level2">
+<h2>TL;DR</h2>
+<p>Fundamentally, Shiny Modules are ‘functions’ that allow components to be reused without having to duplicate code. For instance, you can define a <code>SelectInput</code> block and then reuse it multiple times - without having to copy/paste the same code (with minor changes) over and over. Just like in a ‘standard’ function within R, you can define any type of inputs and also define what the outputs are (if any).</p>
+<p>The package {golem} is very similar to {usethis} in which it enables you to create a ‘package’ for your Shiny application. One of the biggest benefits of this approach is documentation. If you’ve ever composed and published an R package on CRAN, you’ll undoubtedly be familiar with the extensive documentation that is required. {golem} has other major benefits too, but it is NOT a required package to use if you want to use Shiny Modules.</p>
+</div>
+<div id="my-own-challenges" class="section level2">
+<h2>My Own Challenges</h2>
+<p>I think Emily put it best when she wrote “If you already are an R user who likes to think and write functions and understand Shiny basics (i.e. the basics of reactivity come first no matter what), then modules for certain types of tasks (discussed at the end of this post) are an excellent way to up your game” on her <a href="https://emilyriederer.netlify.app/post/shiny-modules/">blog post</a> about Shiny Modules.</p>
+</div>
