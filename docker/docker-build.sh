@@ -1,1 +1,2 @@
-docker build --no-cache -t randomnik_blog:latest .
+docker build --file dockerfile.nikblog . -t nikagarwal/nikblog:prod
+docker push nikagarwal/nikblog:prod

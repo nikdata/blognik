@@ -1,0 +1,105 @@
+FROM rocker/tidyverse:4.1.0
+
+LABEL maintainer="Nik Agarwal <web@niks.me>"
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgit2-dev \
+    libxml2-dev \
+    libudunits2-dev \
+    libgdal-dev \
+    libcairo2-dev \
+    libxt-dev \
+    libv8-dev \
+    libpoppler-cpp-dev \
+    libtesseract-dev \
+    libleptonica-dev \
+    tesseract-ocr-eng \
+    libmagick++-dev \
+    libavfilter-dev \
+    libzmq3-dev \
+    mesa-common-dev \
+    libglu1-mesa-dev \
+    cargo \
+    curl \
+    git \
+    tree \
+    jq \
+    htop \
+    texinfo \
+    vim \
+    man-db \
+    less 
+
+# download deb file for HUGO
+RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.87.0/hugo_0.87.0_Linux-64bit.deb -o hugo.deb
+
+# install hugo
+RUN apt install ./hugo.deb
+
+# define variable for date (used for R packages)
+ENV MRAN_BUILD_DATE=2021-08-01
+
+# Install Publishing Related R Packages
+RUN install2.r -r https://cran.microsoft.com/snapshot/${MRAN_BUILD_DATE} \
+	--error \
+	blogdown \
+    bookdown
+
+# Install utility R packages
+RUN install2.r -r https://cran.microsoft.com/snapshot/${MRAN_BUILD_DATE} \
+    --error \
+    rgl \
+    data.table \
+    reprex \
+    clipr \
+    httr \
+    curl \
+    RCurl \
+    here \
+    janitor \
+    qs \
+    future.callr \
+    tsibble \
+    profvis \
+    targets \ 
+    future \ 
+    future.callr \
+    furrr \
+    curl \
+    bit64 \
+    getPass \
+    RCurl \
+    assertive \
+    RPostgres \
+    pool \
+    skimr \
+    DataExplorer \
+    moments \
+    e1071 \
+    glue
+
+# Install plotting R packages
+RUN install2.r -r https://cran.microsoft.com/snapshot/${MRAN_BUILD_DATE} \
+        --error \
+        lattice \
+	GGally \
+	ggfortify \
+	ggExtra \
+	ggrepel \
+	ggdark \
+	DiagrammeR \
+	patchwork \
+	plotly \
+	txtplot \
+	billboarder \
+	timevis
+
+# Install toy dataset R packages
+RUN install2.r -r https://cran.microsoft.com/snapshot/${MRAN_BUILD_DATE} \
+    --error \
+    palmerpenguins
+
+RUN Rscript -e "blogdown::install_hugo()"
+
+# Copy over my RStudio Preferences
+COPY rstudio-prefs.json /etc/rstudio/

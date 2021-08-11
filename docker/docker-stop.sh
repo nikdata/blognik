@@ -1,1 +1,1 @@
-docker ps -q --filter ancestor="randomnik_blog:latest" | xargs docker stop
+docker ps -q --filter ancestor="nikagarwal/nikblog:prod" | xargs docker stop
