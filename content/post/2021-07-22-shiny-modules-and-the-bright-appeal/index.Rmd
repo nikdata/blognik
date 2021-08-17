@@ -25,18 +25,34 @@ Fundamentally, Shiny Modules are 'functions' that allow components to be reused 
 
 The package {golem} is very similar to {usethis} in which it enables you to create a 'package' for your Shiny application. One of the biggest benefits of this approach is documentation. If you've ever composed and published an R package on CRAN, you'll undoubtedly be familiar with the extensive documentation that is required. {golem} has other major benefits too, but it is NOT a required package to use if you want to use Shiny Modules.
 
+[Example code here](https://gist.github.com/nikdata/f16cc23afa8b8b7cd9de8c9dfc49fdd8).
+
 ## My Own Challenges
 
 I think Emily put it best when she wrote "If you already are an R user who likes to think and write functions and understand Shiny basics (i.e. the basics of reactivity come first no matter what), then modules for certain types of tasks (discussed at the end of this post) are an excellent way to up your game" on her [blog post](https://emilyriederer.netlify.app/post/shiny-modules/) about Shiny Modules.
 
 In my own words, I take this to mean that there are two major concepts you should know and be extremely comfortable with:
 
-1. functions. Without knowing functions or not being comfortable with them, Shiny Modules will be a complex idea to wrap your head around
+1. functions. Without knowing functions or not being comfortable with them, Shiny Modules will be a complex idea to wrap your head around.
 2. reactivity. This [concept](https://shiny.rstudio.com/articles/reactivity-overview.html) is core to Shiny and it is one that I'm not always good with. Loosely put, reactivity enables shiny applications to be more dynamic and 'reactive' to a user's input or actions (either based on active user input or not).
 
-## Here's what I Learned
+What I found challenging and continue to find challenging is the actual implementation of Shiny Modules. Generally, I prefer to start whipping up a script and don't think too much about the coding process. Shiny Modules, on the other hand, almost require you to think very carefully about how your app will work *before* you actually start coding. And this is one of the key wisdom points in the {golem} package. And the more I code using Shiny Modules, I started to realize one thing: thinking about my app before any coding actually makes the whole process simpler and faster!
 
-From my limited understanding, the **purpose** of Shiny Modules is to really help you make your Shiny application modular and scalable. And that happens just like a function. There are many **advantages** to Shiny Modules and, unfortunately, these advantages are heavily dependent on your **needs**. And that brings me to my last point - **need**. I think Shiny Modules are needed if you are developing a complex Shiny application. And a complex Shiny application does not necessarily mean it's hard to develop - rather, it could also mean an application that has many tabs or many different inputs. To me, Shiny Modules make sense when you have components that you will be reusing often. I like to think of these as user inputs such as drop-downs, radio buttons, output plots & tables, etc. 
+## The Lessons I Learned
+
+Boiling it down, I learned three key lessons from using Shiny Modules
+
+1. Think before coding
+
+I mentioned this earlier, but planning my Shiny apps has been a boon! It allows me to clearly know what elements I need/want, where they will go, what purpose they serve, etc. And this process enables me to 'see' the app before its actually coded. And when I sit down to actually code it, the whole process goes much faster. Often, I'll be searching for solutions to technical issues, rather than sitting and thinking on the fly. One perk is I spend less time reworking layouts since I've already planned it out.
+
+2. You don't always need it
+
+I'm still not certain if Shiny Modules is a great fit for all Shiny-related projects. I think it definitely serves a key purpose, but if you're in a sandbox environment or just need to whip something up, it may be easier just to skip Shiny Modules. One thing to keep in mind is that if others on your team are not familiar with Shiny Modules, it may be difficult for them to 'debug' your app or help you with it. Certainly not a major issue if they're willing to learn, but Shiny Modules is a shift in thinking. And this shift can be tedious and time-consuming.
+
+3. Once you grasp it, you'll probably ask yourself why you didn't learn it earlier
+
+This may seem contrary to my last point, but I think it's a mindset shift. I still won't use Shiny modules if I'm just playing around with an app and/or want to whip something up quick. However, I find myself leaning towards Shiny Modules the moment I need/want to use the same UI element more than once. And this is probably why I tend to start using Shiny Modules without even planning the app. This can be problematic at times, but it's also an easy fix since you only have to modify in one spot versus multiple spots. 
 
 ## Of Course I Wrote My Own Code
 
@@ -46,3 +62,6 @@ While there are several tutorials on Shiny Modules, I found that almost all of t
 - on a second NavBarPage, a module is reused
 - multiple dropdowns in which subsequent dropdowns depend on the user value on the previous dropdown
 
+You can find that code as a [GitHub gist](https://gist.github.com/nikdata/f16cc23afa8b8b7cd9de8c9dfc49fdd8).
+
+Happy Coding!
