@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shiny on nikhil agarwal</title>
+    <link>https://nik.netlify.app/tags/shiny/</link>
+    <description>Recent content in shiny on nikhil agarwal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shiny Modules and the Bright Appeal</title>
+      <link>https://nik.netlify.app/post/2021-07-22-shiny-modules-and-the-bright-appeal/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2021-07-22-shiny-modules-and-the-bright-appeal/</guid>
+      <description>For a while now, I’ve been hearing quite a bit about Shiny Modules. In fact, an intriguing package - {golem} - makes strong use of Shiny Modules. The concept of Shiny Modules is not necessarily new; it’s been around for over a year! I never dove into Shiny Modules because when I first started learning more about it, I couldn’t’ wrap my head around a few things:
+ the purpose the need the advantages  And to be fair, the answers to all three are well documented (see here and here).</description>
+    </item>
+    
+  </channel>
+</rss>

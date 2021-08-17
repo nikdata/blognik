@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on nikhil agarwal</title>
+    <link>https://nik.netlify.app/categories/r/</link>
+    <description>Recent content in R on nikhil agarwal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shiny Modules and the Bright Appeal</title>
+      <link>https://nik.netlify.app/post/2021-07-22-shiny-modules-and-the-bright-appeal/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2021-07-22-shiny-modules-and-the-bright-appeal/</guid>
+      <description>For a while now, I’ve been hearing quite a bit about Shiny Modules. In fact, an intriguing package - {golem} - makes strong use of Shiny Modules. The concept of Shiny Modules is not necessarily new; it’s been around for over a year! I never dove into Shiny Modules because when I first started learning more about it, I couldn’t’ wrap my head around a few things:
+ the purpose the need the advantages  And to be fair, the answers to all three are well documented (see here and here).</description>
+    </item>
+    
+    <item>
+      <title>{reticulate} - A Tutorial</title>
+      <link>https://nik.netlify.app/post/reticulate-tutorial/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/reticulate-tutorial/</guid>
+      <description>A walkthrough on using {reticulate} to use the best of Python in R</description>
+    </item>
+    
+    <item>
+      <title>RStudio 1.4 is a Game Changer</title>
+      <link>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</guid>
+      <description>How RStudio 1.4 really ups your Data Science game</description>
+    </item>
+    
+    <item>
+      <title>Introducing {avocado}</title>
+      <link>https://nik.netlify.app/post/introducing-avocado/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/introducing-avocado/</guid>
+      <description>My new package, {avocado}, is now on CRAN</description>
+    </item>
+    
+    <item>
+      <title>Introducing {ialiquor}</title>
+      <link>https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/</link>
+      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/</guid>
+      <description>My first R package, {ialiquor} is now on CRAN</description>
+    </item>
+    
+    <item>
+      <title>My First R Production Models</title>
+      <link>https://nik.netlify.app/post/2020-11-22-my-first-production-models/</link>
+      <pubDate>Sun, 22 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-11-22-my-first-production-models/</guid>
+      <description>I finally have R models in production</description>
+    </item>
+    
+    <item>
+      <title>PlaidML on a Mac with R</title>
+      <link>https://nik.netlify.app/post/2020-10-22-plaidml-on-a-mac-with-r/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-10-22-plaidml-on-a-mac-with-r/</guid>
+      <description>Deep Learning with R on macOS using PlaidML</description>
+    </item>
+    
+  </channel>
+</rss>

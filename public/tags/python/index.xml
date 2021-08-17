@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on nikhil agarwal</title>
+    <link>https://nik.netlify.app/tags/python/</link>
+    <description>Recent content in python on nikhil agarwal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 27 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>{reticulate} - A Tutorial</title>
+      <link>https://nik.netlify.app/post/reticulate-tutorial/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/reticulate-tutorial/</guid>
+      <description>A walkthrough on using {reticulate} to use the best of Python in R</description>
+    </item>
+    
+    <item>
+      <title>RStudio 1.4 is a Game Changer</title>
+      <link>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</guid>
+      <description>How RStudio 1.4 really ups your Data Science game</description>
+    </item>
+    
+  </channel>
+</rss>
