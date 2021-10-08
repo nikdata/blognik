@@ -18,8 +18,21 @@ One of the companies that interviewed me, asked a coding question that was - wel
 > 
 > Possible answers could be:
 >
-> - [(1, 2, 5), (2, 3), (1, 3, 5, 8)]
-> - [(2, 1, 0), (1, 0), (3, 1, 2, 0)]
+> - [(1, 2, 5), (2, 3), (1, 3, 5, 8)]: this refers to the actual integer within array
+> - [(2, 1, 0), (1, 0), (3, 1, 2, 0)]: this refers to the 'index' of the value in array
+
+The issue I have with this kind of question is that it does not accurately nor effectively gauge a person's (especially a Data Scientist's) ability to code in Python, R, Julia, etc. Sorting arrays is not what I would consider a core competency for a data scientist. I know many data scientists, myself included, that are more familiar with the concept of data frames instead of arrays.
+
+Arrays are powerful and can be efficient, but my personal position is that code efficiency is not always a priority and doesn't have to be. Not every code is going to go to production nor does it need to scale. Rather, I've always been an advocate that code readability and ease of understanding is paramount - especially if the code will be read by others. I also believe that it's a mistake if it is to be assumed that the other person reading the code is as well versed in coding as the original author.
+
+## Better Questions
+
+So what's a better question? I came across this [tweet](https://twitter.com/jamietcard/status/1430553259681271809) that really illustrates a great question.
+
+{{% tweet 1430553259681271809 %}} 
+
+
+
 
 Good data science question: https://twitter.com/jamietcard/status/1430553259681271809
 
