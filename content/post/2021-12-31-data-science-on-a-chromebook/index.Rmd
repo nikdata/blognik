@@ -5,7 +5,7 @@ date: '2021-12-31'
 slug: []
 categories: []
 tags: []
-draft: true
+draft: false
 ---
 
 In one of the classes I taught earlier this year, a student asked me if a Chromebook could be used for the coursework. Typically, the students are told to have either a Mac or a Windows machine for the duration of the [Data Science and Analytics bootcamp](https://digitalskills.wisc.edu/data-science-and-analytics-bootcamp/). From a technical support perspective, this makes sense - the University has limited resources and both macOS and Windows are far more popular than Linux for consumer use.
