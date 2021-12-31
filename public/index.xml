@@ -5,7 +5,16 @@
     <link>https://nik.netlify.app/</link>
     <description>Recent content on nikhil agarwal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Science on a Chromebook</title>
+      <link>https://nik.netlify.app/post/2021-12-31-data-science-on-a-chromebook/</link>
+      <pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2021-12-31-data-science-on-a-chromebook/</guid>
+      <description>In one of the classes I taught earlier this year, a student asked me if a Chromebook could be used for the coursework. Typically, the students are told to have either a Mac or a Windows machine for the duration of the Data Science and Analytics bootcamp. From a technical support perspective, this makes sense - the University has limited resources and both macOS and Windows are far more popular than Linux for consumer use.</description>
+    </item>
+    
     <item>
       <title>Introducing the RClimacell Package</title>
       <link>https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/</link>
