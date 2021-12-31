@@ -1,0 +1,139 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>RStudio 1.4 is a Game Changer | nikhil agarwal</title>
+<meta name=keywords content="rstats,python">
+<meta name=description content="How RStudio 1.4 really ups your Data Science game">
+<meta name=author content="
+">
+<link rel=canonical href=https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/>
+<link href=/assets/css/stylesheet.min.d08f6c302eba3eaecd589684c093cecdfe7dfb8745a207401bd0583d3bb31837.css integrity="sha256-0I9sMC66Pq7NWJaEwJPOzf59+4dFogdAG9BYPTuzGDc=" rel="preload stylesheet" as=style>
+<link rel=icon href=https://nik.netlify.app/img/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://nik.netlify.app/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://nik.netlify.app/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://nik.netlify.app/apple-touch-icon.png>
+<link rel=mask-icon href=https://nik.netlify.app/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<meta property="og:title" content="RStudio 1.4 is a Game Changer">
+<meta property="og:description" content="How RStudio 1.4 really ups your Data Science game">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-01-26T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-01-26T00:00:00+00:00"><meta property="og:site_name" content="Nik">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="RStudio 1.4 is a Game Changer">
+<meta name=twitter:description content="How RStudio 1.4 really ups your Data Science game">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://nik.netlify.app/post/"},{"@type":"ListItem","position":3,"name":"RStudio 1.4 is a Game Changer","item":"https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"RStudio 1.4 is a Game Changer","name":"RStudio 1.4 is a Game Changer","description":"How RStudio 1.4 really ups your Data Science game","keywords":["rstats","python"],"articleBody":"  RStudio 1.4 was released in early January (just before the 2021 RStudio Global conference) and it really is a game changer for me and, dare I say, other data scientists!\nPerhaps the most significant update is the ability to display Python objects right in the Environment tab of the RStudio IDE (see below):\nSo why is this a big deal? This new RStudio update is major news since I can now leverage the best of both worlds in one IDE far more easily. Let me list it out:\n I can use {reticulate} to execute code in Python using R syntax - available prior to RStudio 1.4 I can run .py files (Python scripts) within RStudio and not have to use VSCode (my second favorite text-editor/IDE)   Here’s where I’m coming from In my current role, I code in both Python and R and have to use different IDEs (VSCode and RStudio respectively). From my experience, I find certain things to be easier to do in Python and many other things far more easier to do in R. I have to say that matplotlib is by far the WORST Python library I’ve ever used1. On the other hand, {ggplot2} is simply a gorgeous library that makes plotting exceptionally easy and fun. And let me tell you that data wrangling with {dplyr} is far more intuitive than pandas2. However, where Python really shines is the sklearn library. What I really enjoy about the sklearn library is the fact that it can do parallel processing right out of the box without me having to load (or figure out) what other libraries I need. Alas, the syntax for {tidymodels} is far more intuitive.\n The game changing fix Prior to RStudio 1.4, it was kind of a pain to use {reticulate} or run Python scripts. The biggest challenge was not really being able to see what Python objects were loaded into memory if running a Python script. Furthermore, it was annoying (to me) to have to define the virtual environment (or conda environment) to use with {reticulate}3. Now you can just define the path to your favored virtual environment right in the Global Options menu:\nBy defining the virutal environment path, running {reticulate} or Python scripts is far more easier!\n How I’m Using It Since its release, I’ve been fervently using RStudio as my defacto IDE for both R and Python scripts. I’m still not letting go of VSCode; that software has quite a bit of flexibility beyond just being an IDE. However, with the ability of running Python scripts AND seeing the objects in the Environment tab, it makes my adventures in Data Science at work far more productive. Also, this new version has encouraged me to revisit {reticulate}. My plan, going forward, is to integrate both R and Python functions into the same script so I can, basically, take advantage of both languages and be far more productive4.\n  It’s my opinion. Don’t @ me↩︎\n Why does pandas have more than 1 way to do things? The entire syntax in pandas is ugly and hard to read↩︎\n you’d have to use reticulate::use_virtualenv() prior to loading any Python objects into R↩︎\n I don’t have to bounce between 2 different IDEs anymore! YAY!↩︎\n   ","wordCount":"536","inLanguage":"en","datePublished":"2021-01-26T00:00:00Z","dateModified":"2021-01-26T00:00:00Z","author":{"@type":"Person","name":"Nik Agarwal"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/"},"publisher":{"@type":"Organization","name":"nikhil agarwal","logo":{"@type":"ImageObject","url":"https://nik.netlify.app/img/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<noscript>
+<style type=text/css>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://nik.netlify.app accesskey=h title="{nik} (Alt + H)">{nik}</a>
+<span class=logo-switches>
+</span>
+</div>
+<ul id=menu onscroll=menu_on_scroll()>
+<li>
+<a href=https://nik.netlify.app/post/ title=posts>
+<span>posts</span>
+</a>
+</li>
+<li>
+<a href=https://nik.netlify.app/about/ title=about>
+<span>about</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<h1 class=post-title>
+RStudio 1.4 is a Game Changer
+</h1>
+<div class=post-meta>
+26 January 2021&nbsp;·
+3 min
+</div>
+</header> <div class=toc>
+<details open>
+<summary accesskey=c title="(Alt + C)">
+<div class=details>Table of Contents</div>
+</summary>
+<div class=inner><ul>
+<li>
+<a href=# aria-label="So why is this a big deal?">So why is this a big deal?</a></li>
+<li>
+<a href=# aria-label="Here’s where I’m coming from">Here’s where I’m coming from</a></li>
+<li>
+<a href=# aria-label="The game changing fix">The game changing fix</a></li>
+<li>
+<a href=# aria-label="How I’m Using It">How I’m Using It</a>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class=post-content>
+<script src=https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/index_files/header-attrs/header-attrs.js></script>
+<p>RStudio 1.4 was <a href=https://blog.rstudio.com/2021/01/19/announcing-rstudio-1-4/>released</a> in early January (just before the 2021 RStudio Global conference) and it really is a game changer for me and, dare I say, other data scientists!</p>
+<p>Perhaps the most significant update is the ability to display Python objects right in the Environment tab of the RStudio IDE (see below):</p>
+<p><img src=img/screenshot1.png width=400></p>
+<div id=so-why-is-this-a-big-deal class="section level3">
+<h3>So why is this a big deal?</h3>
+<p>This new RStudio update is major news since I can now leverage the best of both worlds in one IDE far more easily. Let me list it out:</p>
+<ul>
+<li>I can use {reticulate} to execute code in Python using R syntax - available prior to RStudio 1.4</li>
+<li>I can run .py files (Python scripts) within RStudio and not have to use VSCode (my second favorite text-editor/IDE)</li>
+</ul>
+</div>
+<div id=heres-where-im-coming-from class="section level3">
+<h3>Here’s where I’m coming from</h3>
+<p>In my current role, I code in both Python and R and have to use different IDEs (VSCode and RStudio respectively). From my experience, I find certain things to be easier to do in Python and many other things far more easier to do in R. I have to say that matplotlib is by far the WORST Python library I’ve ever used<a href=#fn1 class=footnote-ref id=fnref1><sup>1</sup></a>. On the other hand, {ggplot2} is simply a gorgeous library that makes plotting exceptionally easy and fun. And let me tell you that data wrangling with {dplyr} is far more intuitive than pandas<a href=#fn2 class=footnote-ref id=fnref2><sup>2</sup></a>. However, where Python really shines is the sklearn library. What I really enjoy about the sklearn library is the fact that it can do parallel processing right out of the box without me having to load (or figure out) what other libraries I need. Alas, the syntax for {tidymodels} is far more intuitive.</p>
+</div>
+<div id=the-game-changing-fix class="section level3">
+<h3>The game changing fix</h3>
+<p>Prior to RStudio 1.4, it was kind of a pain to use {reticulate} or run Python scripts. The biggest challenge was not really being able to see what Python objects were loaded into memory if running a Python script. Furthermore, it was annoying (to me) to have to define the virtual environment (or conda environment) to use with {reticulate}<a href=#fn3 class=footnote-ref id=fnref3><sup>3</sup></a>. Now you can just define the path to your favored virtual environment right in the Global Options menu:</p>
+<p><img src=img/virtualenv-option.png width=400></p>
+<p>By defining the virutal environment path, running {reticulate} or Python scripts is far more easier!</p>
+</div>
+<div id=how-im-using-it class="section level3">
+<h3>How I’m Using It</h3>
+<p>Since its release, I’ve been fervently using RStudio as my defacto IDE for both R and Python scripts. I’m still not letting go of VSCode; that software has quite a bit of flexibility beyond just being an IDE. However, with the ability of running Python scripts AND seeing the objects in the Environment tab, it makes my adventures in Data Science at work far more productive. Also, this new version has encouraged me to revisit {reticulate}. My plan, going forward, is to integrate both R and Python functions into the same script so I can, basically, take advantage of both languages and be far more productive<a href=#fn4 class=footnote-ref id=fnref4><sup>4</sup></a>.</p>
+</div>
+<div class=footnotes>
+<hr>
+<ol>
+<li id=fn1><p>It’s my opinion. Don’t @ me<a href=#fnref1 class=footnote-back>↩︎</a></p></li>
+<li id=fn2><p>Why does pandas have more than 1 way to do things? The entire syntax in pandas is ugly and hard to read<a href=#fnref2 class=footnote-back>↩︎</a></p></li>
+<li id=fn3><p>you’d have to use <code>reticulate::use_virtualenv(&lt;path>)</code> prior to loading any Python objects into R<a href=#fnref3 class=footnote-back>↩︎</a></p></li>
+<li id=fn4><p>I don’t have to bounce between 2 different IDEs anymore! YAY!<a href=#fnref4 class=footnote-back>↩︎</a></p></li>
+</ol>
+</div>
+</div>
+<footer class=post-footer>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://nik.netlify.app>nikhil agarwal</a></span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
+<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</button>
+</a>
+<script defer src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<script>window.onload=function(){localStorage.getItem("menu-scroll-position")&&(document.getElementById('menu').scrollLeft=localStorage.getItem("menu-scroll-position"))};function menu_on_scroll(){localStorage.setItem("menu-scroll-position",document.getElementById('menu').scrollLeft)}document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+</body>
+</html>

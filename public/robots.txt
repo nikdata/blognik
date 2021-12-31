@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://nik.netlify.app/sitemap.xml

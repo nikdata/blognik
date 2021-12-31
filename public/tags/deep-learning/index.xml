@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>deep learning on nikhil agarwal</title>
+    <link>https://nik.netlify.app/tags/deep-learning/</link>
+    <description>Recent content in deep learning on nikhil agarwal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 22 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PlaidML on a Mac with R</title>
+      <link>https://nik.netlify.app/post/2020-10-22-plaidml-on-a-mac-with-r/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-10-22-plaidml-on-a-mac-with-r/</guid>
+      <description>Deep Learning with R on macOS using PlaidML</description>
+    </item>
+    
+  </channel>
+</rss>
