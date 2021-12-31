@@ -1,127 +1,99 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Nik Agarwal</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Nik Agarwal</description>
+    <title>Posts on nikhil agarwal</title>
+    <link>https://nik.netlify.app/post/</link>
+    <description>Recent content in Posts on nikhil agarwal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2020. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 16 Jul 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Creating a New Theme</title>
-      <link>/post/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <title>Introducing the RClimacell Package</title>
+      <link>https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/post/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+      <guid>https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/</guid>
+      <description>A brief introduction of {RClimacell}, my new package that leverages the ClimaCell API for retrieving weather data</description>
     </item>
     
     <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>/post/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      <title>{reticulate} - A Tutorial</title>
+      <link>https://nik.netlify.app/post/reticulate-tutorial/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/post/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+      <guid>https://nik.netlify.app/post/reticulate-tutorial/</guid>
+      <description>A walkthrough on using {reticulate} to use the best of Python in R</description>
+    </item>
+    
+    <item>
+      <title>RStudio 1.4 is a Game Changer</title>
+      <link>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</guid>
+      <description>How RStudio 1.4 really ups your Data Science game</description>
+    </item>
+    
+    <item>
+      <title>Introducing {avocado}</title>
+      <link>https://nik.netlify.app/post/introducing-avocado/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/introducing-avocado/</guid>
+      <description>My new package, {avocado}, is now on CRAN</description>
+    </item>
+    
+    <item>
+      <title>Introducing {ialiquor}</title>
+      <link>https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/</link>
+      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/</guid>
+      <description>My thoughts on the creation of my first CRAN package.</description>
+    </item>
+    
+    <item>
+      <title>My First R Production Models</title>
+      <link>https://nik.netlify.app/post/2020-11-22-my-first-production-models/</link>
+      <pubDate>Sun, 22 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-11-22-my-first-production-models/</guid>
+      <description>I finally have R models in production</description>
+    </item>
+    
+    <item>
+      <title>PlaidML on a Mac with R</title>
+      <link>https://nik.netlify.app/post/2020-10-22-plaidml-on-a-mac-with-r/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-10-22-plaidml-on-a-mac-with-r/</guid>
+      <description>Deep Learning with R on macOS using PlaidML</description>
+    </item>
+    
+    <item>
+      <title>Docker and R - A Magic Combo</title>
+      <link>https://nik.netlify.app/post/2020-10-20-docker-and-r/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2020-10-20-docker-and-r/</guid>
+      <description>A couple notes on using Dockerfiles with {blogdown}</description>
     </item>
     
     <item>
       <title>Tidy Correlations</title>
-      <link>/post/tidy-correlations/</link>
+      <link>https://nik.netlify.app/post/tidy-correlations/</link>
       <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/tidy-correlations/</guid>
-      <description>When creating correlation matrices, one of the hardest things I find is the ability to read it easily. Here’s an example of a correlation table:
- a b x y z a 1.00000000 0.127548585 0.033222037 0.1765430 -0.08899377 b 0.12754858 1.000000000 0.006865677 0.2414983 -0.05343201 x 0.03322204 0.006865677 1.000000000 -0.1045047 0.03734388 y 0.17654300 0.241498328 -0.104504744 1.0000000 0.21812433 z -0.08899377 -0.053432013 0.037343880 0.2181243 1.00000000 In order to find the two variables that have the highest positive or negative correlation is not easy.</description>
+      <guid>https://nik.netlify.app/post/tidy-correlations/</guid>
+      <description>A short tutorial on correlations in a &amp;lsquo;tidy&amp;rsquo; way</description>
     </item>
     
     <item>
       <title>Magic 8 Ball Function</title>
-      <link>/post/magic-8-ball-function/</link>
+      <link>https://nik.netlify.app/post/magic-8-ball-function/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/magic-8-ball-function/</guid>
-      <description>In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that ‘acted’ like the venerable Magic 8 Ball. So let’s get to it!
-Prerequisite The function must output one of the following texts:   ‘I don’t see that happening.’ ‘You must be dreaming.’ ‘Chances are good.’ ‘If you work hard and stay focused, then this might happen.</description>
-    </item>
-    
-    <item>
-      <title>Tanka Theme Demo</title>
-      <link>/post/tanka-theme-demo/</link>
-      <pubDate>Tue, 26 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/tanka-theme-demo/</guid>
-      <description>Tanka is a minimalist, text-oriented, and performant Hugo theme.
-Features  Minimalist Responsive Typography first High Contrast Disqus Google Analytics  Typography h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
-This is bold text
-This is italic text
-This is italic text
-Deleted text
- Block quotes are written like so.
-They can span multiple paragraphs, if you like.
- Some text, and some code and then a nice plain link with title.</description>
-    </item>
-    
-    <item>
-      <title>A Plain Markdown Post</title>
-      <link>/post/hello-markdown/</link>
-      <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
-      
-      <guid>/post/hello-markdown/</guid>
-      <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
- You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-    <item>
-      <title>Lorem Ipsum</title>
-      <link>/post/lorem-ipsum/</link>
-      <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
-      
-      <guid>/post/lorem-ipsum/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>/post/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/post/goisforlovers/</guid>
-      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-This document is a brief primer on using go templates.</description>
-    </item>
-    
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>/post/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/post/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+      <guid>https://nik.netlify.app/post/magic-8-ball-function/</guid>
+      <description>A quick tutorial on functions in R</description>
     </item>
     
   </channel>

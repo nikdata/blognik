@@ -1,0 +1,132 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Introducing the RClimacell Package | nikhil agarwal</title>
+<meta name=keywords content>
+<meta name=description content="A brief introduction of {RClimacell}, my new package that leverages the ClimaCell API for retrieving weather data">
+<meta name=author content="
+">
+<link rel=canonical href=https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/>
+<link href=/assets/css/stylesheet.min.d08f6c302eba3eaecd589684c093cecdfe7dfb8745a207401bd0583d3bb31837.css integrity="sha256-0I9sMC66Pq7NWJaEwJPOzf59+4dFogdAG9BYPTuzGDc=" rel="preload stylesheet" as=style>
+<link rel=icon href=https://nik.netlify.app/img/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://nik.netlify.app/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://nik.netlify.app/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://nik.netlify.app/apple-touch-icon.png>
+<link rel=mask-icon href=https://nik.netlify.app/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<meta property="og:title" content="Introducing the RClimacell Package">
+<meta property="og:description" content="A brief introduction of {RClimacell}, my new package that leverages the ClimaCell API for retrieving weather data">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-04-01T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-04-01T00:00:00+00:00"><meta property="og:site_name" content="Nik">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Introducing the RClimacell Package">
+<meta name=twitter:description content="A brief introduction of {RClimacell}, my new package that leverages the ClimaCell API for retrieving weather data">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://nik.netlify.app/post/"},{"@type":"ListItem","position":3,"name":"Introducing the RClimacell Package","item":"https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Introducing the RClimacell Package","name":"Introducing the RClimacell Package","description":"A brief introduction of {RClimacell}, my new package that leverages the ClimaCell API for retrieving weather data","keywords":[],"articleBody":"  I’m pleased to announce the {RClimacell} package (granted it’s been out on CRAN for a few weeks now). This pacakge is exceptionally useful in retrieving weather data using the Climacell API. If you haven’t heard of Climacell, it’s a company out of Boston focused on hyper-local weather forecasting. Ever since the DarkSky API has shut down, many other companies have started to fill the void. One of the most attractive aspects of DarkSky was its “pay-as-you-go” pricing, which was really cool as you could use it as much as you want (within the limitations) and not have any recurring subscription fees (which I really disdain).\nClimacell isn’t necessarily the most friendly towards developers, in my opinion. Over the last few weeks, I’ve seen their pricing become a bit more stingy and not very friendly. For example, in late 2020, they offered up to 1000 API calls per day, now it’s around 500. While that sounds great, it’s also hampered by the fact that you can only make 25 calls per hour. Debugging erroneous code is not fun if you hit that threshold. But I digress.\nPackage website\nI think the package website is really good at highlighting what can be done with this package. The key limitation is that it only leverages the Timelines Interface from Climacell as its the only way to get most of the data for free.\nSince the package makes extensive use the tidyverse lingo, it’s quite fun to use as well!\ndf_temp  library(ggplot2) library(dplyr) library(extrafont) df_temp %% select(start_time, temp_c, temp_feel_c) %% tidyr::pivot_longer(cols = temp_c:temp_feel_c) %% ggplot(aes(x = start_time, y = value, color = name)) + geom_line() + labs(x = 'Time (UTC)', y = 'Temperature (Celsius)', color = 'Type', title = \"Predicted Temperature by Time\", caption = 'Timestep of 1 minute' ) + scale_color_discrete(labels = c('Predicted Temperature','Feels Like Temperature')) + theme(plot.title = element_text(family = \"Bahnschrift\", color = 'grey100'), plot.caption = element_text(family = \"Bahnschrift\", color = 'grey60'), axis.title = element_text(family = 'Bahnschrift', color = 'grey100'), axis.text.x = element_text(family = \"Bahnschrift\", color = 'grey70'), axis.text.y = element_text(family = \"Bahnschrift\", color = 'grey70'), plot.background = element_rect(fill = 'grey10'), panel.background = element_blank(), panel.grid.major = element_line(color = 'grey30', size = 0.2), panel.grid.minor = element_line(color = 'grey30', size = 0.2), legend.background = element_rect(fill = 'grey20'), legend.key = element_blank(), legend.title = element_text(family = 'Bahnschrift', color = 'grey80'), legend.text = element_text(family = \"Bahnschrift\", color = 'grey90'), legend.position = c(0.87, 0.2) ) ","wordCount":"420","inLanguage":"en","datePublished":"2021-04-01T00:00:00Z","dateModified":"2021-04-01T00:00:00Z","author":{"@type":"Person","name":"Nik Agarwal"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/"},"publisher":{"@type":"Organization","name":"nikhil agarwal","logo":{"@type":"ImageObject","url":"https://nik.netlify.app/img/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<noscript>
+<style type=text/css>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://nik.netlify.app accesskey=h title="{nik} (Alt + H)">{nik}</a>
+<span class=logo-switches>
+</span>
+</div>
+<ul id=menu onscroll=menu_on_scroll()>
+<li>
+<a href=https://nik.netlify.app/post/ title=posts>
+<span>posts</span>
+</a>
+</li>
+<li>
+<a href=https://nik.netlify.app/about/ title=about>
+<span>about</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<h1 class=post-title>
+Introducing the RClimacell Package
+</h1>
+<div class=post-meta>
+1 April 2021&nbsp;·
+2 min
+</div>
+</header>
+<div class=post-content>
+<script src=https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/index_files/header-attrs/header-attrs.js></script>
+<p>I’m pleased to announce the {RClimacell} package (granted it’s been out on CRAN for a few weeks now). This pacakge is exceptionally useful in retrieving weather data using the Climacell API. If you haven’t heard of Climacell, it’s a company out of Boston focused on hyper-local weather forecasting. Ever since the DarkSky API has <a href=https://blog.darksky.net>shut down</a>, many other companies have started to fill the void. One of the most attractive aspects of DarkSky was its “pay-as-you-go” pricing, which was really cool as you could use it as much as you want (within the limitations) and <strong>not</strong> have any recurring subscription fees (which I really disdain).</p>
+<p>Climacell isn’t necessarily the most friendly towards developers, in my opinion. Over the last few weeks, I’ve seen their pricing become a bit more stingy and not very friendly. For example, in late 2020, they offered up to 1000 API calls per day, now it’s around 500. While that sounds great, it’s also hampered by the fact that you can only make 25 calls per hour. Debugging erroneous code is not fun if you hit that threshold. But I digress.</p>
+<p><a href=https://nikdata.github.io/RClimacell/>Package website</a></p>
+<p>I think the package website is really good at highlighting what can be done with this package. The key limitation is that it only leverages the Timelines Interface from Climacell as its the only way to get most of the data for free.</p>
+<p>Since the package makes extensive use the tidyverse lingo, it’s quite fun to use as well!</p>
+<pre class=r><code>df_temp &lt;- RClimacell::climacell_core(
+  api_key = Sys.getenv(&#39;CLIMACELL_API&#39;),
+  lat = 41.8789,
+  long = 87.6359,
+  timestep = &#39;1m&#39;,
+  start_time = lubridate::now(),
+  end_time = lubridate::now() + lubridate::hours(6)
+)</code></pre>
+<pre class=r><code>library(ggplot2)
+library(dplyr)
+library(extrafont)
+
+df_temp %&gt;%
+  select(start_time, temp_c, temp_feel_c) %&gt;%
+  tidyr::pivot_longer(cols = temp_c:temp_feel_c) %&gt;%
+  ggplot(aes(x = start_time, y = value, color = name)) +
+  geom_line() +
+  labs(x = &#39;Time (UTC)&#39;,
+       y = &#39;Temperature (Celsius)&#39;,
+       color = &#39;Type&#39;,
+       title = &quot;Predicted Temperature by Time&quot;,
+       caption = &#39;Timestep of 1 minute&#39;
+  ) +
+  scale_color_discrete(labels = c(&#39;Predicted Temperature&#39;,&#39;Feels Like Temperature&#39;)) +
+  theme(plot.title = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey100&#39;),
+        plot.caption = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey60&#39;),
+        axis.title = element_text(family = &#39;Bahnschrift&#39;, color = &#39;grey100&#39;),
+        axis.text.x = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey70&#39;),
+        axis.text.y = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey70&#39;),
+        plot.background = element_rect(fill = &#39;grey10&#39;),
+        panel.background = element_blank(),
+        panel.grid.major = element_line(color = &#39;grey30&#39;, size = 0.2),
+        panel.grid.minor = element_line(color = &#39;grey30&#39;, size = 0.2),
+        legend.background =  element_rect(fill = &#39;grey20&#39;),
+        legend.key = element_blank(),
+        legend.title = element_text(family = &#39;Bahnschrift&#39;, color = &#39;grey80&#39;),
+        legend.text = element_text(family = &quot;Bahnschrift&quot;, color = &#39;grey90&#39;),
+        legend.position = c(0.87, 0.2)
+  )</code></pre>
+<p><img src=https://nik.netlify.app/post/2021-04-01-introducing-the-rclimacell-package/index_files/figure-html/unnamed-chunk-2-1.png width=672></p>
+</div>
+<footer class=post-footer>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://nik.netlify.app>nikhil agarwal</a></span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
+<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</button>
+</a>
+<script defer src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<script>window.onload=function(){localStorage.getItem("menu-scroll-position")&&(document.getElementById('menu').scrollLeft=localStorage.getItem("menu-scroll-position"))};function menu_on_scroll(){localStorage.setItem("menu-scroll-position",document.getElementById('menu').scrollLeft)}document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+</body>
+</html>

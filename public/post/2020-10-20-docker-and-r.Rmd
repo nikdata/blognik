@@ -1,0 +1,45 @@
+---
+title: Docker and R - A Magic Combo
+author: Nik Agarwal
+date: '2020-10-20'
+slug: [docker-and-r-a-magic-combo]
+categories: []
+tags: ["docker"]
+draft: false
+summary: "A couple notes on using Dockerfiles with {blogdown}"
+---
+
+My good friend (and former classmate) Rahul Sangole has a great [blog post](https://rsangole.netlify.app/post/2020/10/10/reproducible-work-in-r/) about setting up Docker & R and why he did it. It really boils down to a couple different things: reproducibility and having a consistent development environment. As a data scientist, I cannot stress the importance of reproducibility. If you can't reproduce your results/analyses (nor can anyone else), then suffice to say, that's a bad thing!
+
+Anyways, I ran into some issues running Rahul's Dockerfile. Specifically, I couldn't get blogdown to work with my blog. I'm not sure if that was by design, but I wanted to "amend" his blog post with a few of my own points:
+
+- using binaries instead of source files for R packages
+- using RStudio's Package Manager instead of MRAN
+- installing Hugo (with blogdown) during the Docker image creation
+
+For reference, here's a link to my [Dockerfile](https://github.com/nikdata/blognik/blob/master/docker/Dockerfile).
+
+# Source vs. Binary
+
+This is a key concept that I think most users going down the Docker and R path should be aware of. Simply put, a "binary" is already compiled for a given system and a "source" is not. Think of the "source" file like a set-up file that will need to be installed. On the other hand, a "binary" is the whole package that does not require installation (think copy & paste of the package). Hence, when compiling a Docker image, using "binary" files as much as possible will help speed up the creation time.
+
+Since binary files are already compiled for a particular system, it's critical that you know which system you are using. For example, binary R packages constructed for Ubuntu Xenial will NOT work for RedHat.
+
+# MRAN vs. RStudio Package Manager
+
+As Rahul points out in his blog, he uses [MRAN](https://mran.microsoft.com) - Microsoft's solution to 'archiving' the activity they see on CRAN. I'm not 100% certain, but I don't think MRAN has binaries available for the different R packages. On the other hand, [RStudio's Package Manager](https://packagemanager.rstudio.com/client/#/repos/1/packages/A3) has *both*. Furthermore, RStudio Package Manager also has 'snapshots' similar to MRAN for particular days. While MRAN is more comprehensive and uses actual dates in their URL, RStudio does offer a compelling alternative.
+
+# Installing Hugo
+
+This one took me a while to figure out, but the end solution was much simpler than the rabbit holes I went down. Basically, I just need to have blogdown install it for me after it (blogdown) was installed.
+
+```
+WORKDIR /home/rstudio/bin/
+RUN R -e "options(blogdown.hugo.dir = '/home/rstudio/bin'); blogdown::install_hugo(version = '0.70.0')"
+```
+
+The WORKDIR argument is key as it creates that folder location and sets the working directory to it. This is the location where the function `blogdown::install_hugo()` will install to.
+
+# Success
+
+This Dockerfile creates an image that works on my machine quite well. I also was able to get it to work on my work machine. I am a bit troubled at the overall size of the Docker image - which for me was a bit over 5 GB. 

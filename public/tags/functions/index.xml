@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>functions on Nik Agarwal</title>
-    <link>/tags/functions/</link>
-    <description>Recent content in functions on Nik Agarwal</description>
+    <title>functions on nikhil agarwal</title>
+    <link>https://nik.netlify.app/tags/functions/</link>
+    <description>Recent content in functions on nikhil agarwal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2020. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/functions/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/tags/functions/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Magic 8 Ball Function</title>
-      <link>/post/magic-8-ball-function/</link>
+      <link>https://nik.netlify.app/post/magic-8-ball-function/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/magic-8-ball-function/</guid>
-      <description>In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that ‘acted’ like the venerable Magic 8 Ball. So let’s get to it!
-Prerequisite The function must output one of the following texts:   ‘I don’t see that happening.’ ‘You must be dreaming.’ ‘Chances are good.’ ‘If you work hard and stay focused, then this might happen.</description>
+      <guid>https://nik.netlify.app/post/magic-8-ball-function/</guid>
+      <description>A quick tutorial on functions in R</description>
     </item>
     
   </channel>

@@ -1,0 +1,169 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Introducing {ialiquor} | nikhil agarwal</title>
+<meta name=keywords content="package,package development,CRAN">
+<meta name=description content="My thoughts on the creation of my first CRAN package.">
+<meta name=author content="
+">
+<link rel=canonical href=https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/>
+<link href=/assets/css/stylesheet.min.d08f6c302eba3eaecd589684c093cecdfe7dfb8745a207401bd0583d3bb31837.css integrity="sha256-0I9sMC66Pq7NWJaEwJPOzf59+4dFogdAG9BYPTuzGDc=" rel="preload stylesheet" as=style>
+<link rel=icon href=https://nik.netlify.app/img/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://nik.netlify.app/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://nik.netlify.app/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://nik.netlify.app/apple-touch-icon.png>
+<link rel=mask-icon href=https://nik.netlify.app/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<meta property="og:title" content="Introducing {ialiquor}">
+<meta property="og:description" content="My thoughts on the creation of my first CRAN package.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2020-12-07T00:00:00+00:00">
+<meta property="article:modified_time" content="2020-12-07T00:00:00+00:00"><meta property="og:site_name" content="Nik">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Introducing {ialiquor}">
+<meta name=twitter:description content="My thoughts on the creation of my first CRAN package.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://nik.netlify.app/post/"},{"@type":"ListItem","position":3,"name":"Introducing {ialiquor}","item":"https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Introducing {ialiquor}","name":"Introducing {ialiquor}","description":"My thoughts on the creation of my first CRAN package.","keywords":["package","package development","CRAN"],"articleBody":"  I’m pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo \u0026 vignettes:\n Package Repo: https://github.com/nikdata/ialiquor Package Webpage: https://nikdata.github.io/ialiquor/index.html Vignettes: https://nikdata.github.io/ialiquor/articles/  I’ve tried to document as much as I could on the repo and the package website - so I’ll try not to repeat myself in this post.\nAbout {ialiquor} The {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:\n For grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.\n In plain English, this means that Class E is talking about hard liquor (excluding wine and beer).\n Purpose I really had two goals with this package:\n learn how to create a dataset only package try to publish on CRAN  Needless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN.\nDataset only? It will help to know that the dataset (found here) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What’s really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).\nOverall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)1. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that’s where I decided to trim it to no earlier than 2015.\nIn order to create the dataset, I simply had to create a query using SODA. This format essentially allows you to construct a query onto the URL of the dataset. Although the {RSocrata} package exists, I found it to be pretty poor2 in helping construct a query (unlike the sodapy library for Python).\nWith all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that.\n Publishing on CRAN I’ve attended several RStudio conferences over years and one common theme I’ve heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the ‘daunting’ part was the wait time from when I submitted the package to when I received an email saying it “was on its way to CRAN”. Two things really helped me become a bit more comfortable with the process:\n Hadley Wickham’s (and Jenny Bryan’s) book “R Packages” Rami Krispin offering a quick step-by-step approach  To summarize my approach, here’s what I did:\nUse the ‘check’ function in RStudio IDE (under the Build tab) frequently Make sure there are 0 errors, 0 warnings/caution, 0 notes Complete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo use the check_win_devel() and check_win_release() functions from {devtools} Make sure the log outputs from both of those function calls also has 0 errors, warnings, notes If notes do come up and cannot be resolved or are not important, document it under file called cran-comments.md use devtools::submit_cran() to submit  Many of those steps are in Hadley’s book. Step 4 was something that Rami had mentioned to me (and super useful). Since I’m on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN’s auto-checks showed a note about a problematic URL address. I didn’t update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN’s auto check could access. I don’t know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.\nOne last note I’d like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?\nIf you do use the {ialiquor} package, I’d love to hear more about it. If you find issues, please open an issue on the repo.\n   the first nuance I learned↩︎\n I’m not really ‘bashing’ on this package, but I feel it’s not very ‘friendly’ to users who are not as familiar with SODA SQL↩︎\n   ","wordCount":"875","inLanguage":"en","datePublished":"2020-12-07T00:00:00Z","dateModified":"2020-12-07T00:00:00Z","author":{"@type":"Person","name":"Nik Agarwal"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/"},"publisher":{"@type":"Organization","name":"nikhil agarwal","logo":{"@type":"ImageObject","url":"https://nik.netlify.app/img/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<noscript>
+<style type=text/css>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://nik.netlify.app accesskey=h title="{nik} (Alt + H)">{nik}</a>
+<span class=logo-switches>
+</span>
+</div>
+<ul id=menu onscroll=menu_on_scroll()>
+<li>
+<a href=https://nik.netlify.app/post/ title=posts>
+<span>posts</span>
+</a>
+</li>
+<li>
+<a href=https://nik.netlify.app/about/ title=about>
+<span>about</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<h1 class=post-title>
+Introducing {ialiquor}
+</h1>
+<div class=post-description>
+My thoughts on the creation of my first CRAN package.
+</div>
+<div class=post-meta>
+7 December 2020&nbsp;·
+5 min
+</div>
+</header> <div class=toc>
+<details open>
+<summary accesskey=c title="(Alt + C)">
+<div class=details>Table of Contents</div>
+</summary>
+<div class=inner><ul>
+<li>
+<a href=# aria-label="About {ialiquor}">About {ialiquor}</a></li>
+<li>
+<a href=# aria-label=Purpose>Purpose</a><ul>
+<li>
+<a href=# aria-label="Dataset only?">Dataset only?</a></li>
+<li>
+<a href=# aria-label="Publishing on CRAN">Publishing on CRAN</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class=post-content>
+<script src=https://nik.netlify.app/post/2020-12-07-introducing-ialiquor/index_files/header-attrs/header-attrs.js></script>
+<p>I’m pleased to say that I have my first R package, {ialiquor}, published on CRAN (version 0.1.0 as of this writing). Here are a few links to the package repo & vignettes:</p>
+<ul>
+<li>Package Repo: <a href=https://github.com/nikdata/ialiquor>https://github.com/nikdata/ialiquor</a></li>
+<li>Package Webpage: <a href=https://nikdata.github.io/ialiquor/index.html>https://nikdata.github.io/ialiquor/index.html</a></li>
+<li>Vignettes: <a href=https://nikdata.github.io/ialiquor/articles/>https://nikdata.github.io/ialiquor/articles/</a></li>
+</ul>
+<p>I’ve tried to document as much as I could on the repo and the package website - so I’ll try not to repeat myself in this post.</p>
+<div id=about-ialiquor class="section level2">
+<h2>About {ialiquor}</h2>
+<p>The {ialiquor} package conveniently summarizes by month the Class E liquor sales in the state of Iowa. Class E liquor, as defined by the state, is:</p>
+<blockquote>
+<p>For grocery, liquor and convenience stores, etc. Allows for the sale of alcoholic liquor for off-premises consumption in original unopened containers. No sales by the drink. Sunday sales are included. Also allows wholesale sales to on-premises Class A, B, C and D liquor licensees but must have a TTB Federal Wholesale Basic Permit.</p>
+</blockquote>
+<p>In plain English, this means that Class E is talking about hard liquor (excluding wine and beer).</p>
+</div>
+<div id=purpose class="section level2">
+<h2>Purpose</h2>
+<p>I really had two goals with this package:</p>
+<ul>
+<li>learn how to create a dataset only package</li>
+<li>try to publish on CRAN</li>
+</ul>
+<p>Needless to say, as I was developing this package, I was able to learn more about the different nuances to be aware of if the goal is to publish a package on CRAN.</p>
+<div id=dataset-only class="section level3">
+<h3>Dataset only?</h3>
+<p>It will help to know that the dataset (found <a href=https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy>here</a>) is actually a daily snapshot of the sales of Class E liquor (updated monthly). What’s really peculiar is how the State of Iowa manages the sales. For instance, retailers cannot buy Class E liquor directly from vendors/manufacturers. Rather, the state purchases the product and then allows the retailers within the state (that have the appropriate purchasing license - known as Class E) to purchase the product. Loosely put, the State of Iowa has a monopoly and can easily generate profit from the sales (but I digress).</p>
+<p>Overall, the data are over several gigabytes and date back to January 1, 2012. This is an extremely large dataset and CRAN would never approve a package with such a large dataset. Keep in mind that CRAN only allows packages up to 5 MB (larger ones could be approved, but highly unlikely)<a href=#fn1 class=footnote-ref id=fnref1><sup>1</sup></a>. For the purposes I set out to achieve, it made sense to aggregate to a monthly level. However, the dataset was still too large and that’s where I decided to trim it to no earlier than 2015.</p>
+<p>In order to create the dataset, I simply had to create a query using <a href=https://dev.socrata.com/docs/queries/>SODA</a>. This format essentially allows you to construct a query onto the URL of the dataset. Although the <a href=https://github.com/Chicago/RSocrata>{RSocrata}</a> package exists, I found it to be pretty poor<a href=#fn2 class=footnote-ref id=fnref2><sup>2</sup></a> in helping construct a query (unlike the sodapy library for Python).</p>
+<p>With all that said, it did not make sense to me to add any functions per se for further analysis. Part of my intention was to make the liquor data from the State of Iowa a bit more manageable. And I think the {ialiquor} package does just that.</p>
+</div>
+<div id=publishing-on-cran class="section level3">
+<h3>Publishing on CRAN</h3>
+<p>I’ve attended several RStudio conferences over years and one common theme I’ve heard from many folks is the daunting process of getting a package approved by CRAN. In my experience, the ‘daunting’ part was the wait time from when I submitted the package to when I received an email saying it “was on its way to CRAN”. Two things really helped me become a bit more comfortable with the process:</p>
+<ul>
+<li>Hadley Wickham’s (and Jenny Bryan’s) book “<a href=https://r-pkgs.org>R Packages</a>”</li>
+<li><a href=https://ramikrispin.github.io>Rami Krispin</a> offering a quick step-by-step approach</li>
+</ul>
+<p>To summarize my approach, here’s what I did:</p>
+<ol style=list-style-type:decimal>
+<li>Use the ‘check’ function in RStudio IDE (under the Build tab) frequently</li>
+<li>Make sure there are 0 errors, 0 warnings/caution, 0 notes</li>
+<li>Complete all vignettes, documentation, build pkgdown site, comments as needed, updated Readme on git repo</li>
+<li>use the <code>check_win_devel()</code> and <code>check_win_release()</code> functions from {devtools}</li>
+<li>Make sure the log outputs from both of those function calls also has 0 errors, warnings, notes</li>
+<li>If notes do come up and cannot be resolved or are not important, document it under file called <code>cran-comments.md</code></li>
+<li>use <code>devtools::submit_cran()</code> to submit</li>
+</ol>
+<p>Many of those steps are in Hadley’s book. Step 4 was something that Rami had mentioned to me (and super useful). Since I’m on a Mac, I knew that my package worked without issue. However, the functions in Step 4 ensured that my package could work on Windows. Furthermore, after I did submit, CRAN’s auto-checks showed a note about a problematic URL address. I didn’t update my comments, but it was pretty clear that it was a valid URL - just not a URL that CRAN’s auto check could access. I don’t know for certain, but I am of the belief that my documentation probably helped the CRAN reviewer.</p>
+<p>One last note I’d like to make is that documentation took 80% of my time. Is this any surprise to a data scientist?</p>
+<p>If you do use the {ialiquor} package, I’d love to hear more about it. If you find issues, please open an issue on the repo.</p>
+</div>
+</div>
+<div class=footnotes>
+<hr>
+<ol>
+<li id=fn1><p>the first nuance I learned<a href=#fnref1 class=footnote-back>↩︎</a></p></li>
+<li id=fn2><p>I’m not really ‘bashing’ on this package, but I feel it’s not very ‘friendly’ to users who are not as familiar with SODA SQL<a href=#fnref2 class=footnote-back>↩︎</a></p></li>
+</ol>
+</div>
+</div>
+<footer class=post-footer>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://nik.netlify.app>nikhil agarwal</a></span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
+<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</button>
+</a>
+<script defer src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<script>window.onload=function(){localStorage.getItem("menu-scroll-position")&&(document.getElementById('menu').scrollLeft=localStorage.getItem("menu-scroll-position"))};function menu_on_scroll(){localStorage.setItem("menu-scroll-position",document.getElementById('menu').scrollLeft)}document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+</body>
+</html>

@@ -6,6 +6,7 @@ slug: magic-8-ball-function
 categories: []
 tags: ["RStats", "functions"]
 draft: false
+summary: "A quick tutorial on functions in R" 
 ---
 
 In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that 'acted' like the venerable [Magic 8 Ball](https://en.wikipedia.org/wiki/Magic_8-Ball). So let's get to it!

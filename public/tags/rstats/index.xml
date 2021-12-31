@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RStats on Nik Agarwal</title>
-    <link>/tags/rstats/</link>
-    <description>Recent content in RStats on Nik Agarwal</description>
+    <title>RStats on nikhil agarwal</title>
+    <link>https://nik.netlify.app/tags/rstats/</link>
+    <description>Recent content in RStats on nikhil agarwal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2020. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 16 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://nik.netlify.app/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>{reticulate} - A Tutorial</title>
+      <link>https://nik.netlify.app/post/reticulate-tutorial/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/reticulate-tutorial/</guid>
+      <description>A walkthrough on using {reticulate} to use the best of Python in R</description>
+    </item>
     
-	<atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>RStudio 1.4 is a Game Changer</title>
+      <link>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://nik.netlify.app/post/2021-01-26-rstudio-1-4-is-a-game-changer/</guid>
+      <description>How RStudio 1.4 really ups your Data Science game</description>
+    </item>
     
     <item>
       <title>Tidy Correlations</title>
-      <link>/post/tidy-correlations/</link>
+      <link>https://nik.netlify.app/post/tidy-correlations/</link>
       <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/tidy-correlations/</guid>
-      <description>When creating correlation matrices, one of the hardest things I find is the ability to read it easily. Here’s an example of a correlation table:
- a b x y z a 1.00000000 0.127548585 0.033222037 0.1765430 -0.08899377 b 0.12754858 1.000000000 0.006865677 0.2414983 -0.05343201 x 0.03322204 0.006865677 1.000000000 -0.1045047 0.03734388 y 0.17654300 0.241498328 -0.104504744 1.0000000 0.21812433 z -0.08899377 -0.053432013 0.037343880 0.2181243 1.00000000 In order to find the two variables that have the highest positive or negative correlation is not easy.</description>
+      <guid>https://nik.netlify.app/post/tidy-correlations/</guid>
+      <description>A short tutorial on correlations in a &amp;lsquo;tidy&amp;rsquo; way</description>
     </item>
     
     <item>
       <title>Magic 8 Ball Function</title>
-      <link>/post/magic-8-ball-function/</link>
+      <link>https://nik.netlify.app/post/magic-8-ball-function/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/magic-8-ball-function/</guid>
-      <description>In my PREDICT 454 class, one of the R challenges that our professor wanted us to undertake involved creating a simple function that ‘acted’ like the venerable Magic 8 Ball. So let’s get to it!
-Prerequisite The function must output one of the following texts:   ‘I don’t see that happening.’ ‘You must be dreaming.’ ‘Chances are good.’ ‘If you work hard and stay focused, then this might happen.</description>
+      <guid>https://nik.netlify.app/post/magic-8-ball-function/</guid>
+      <description>A quick tutorial on functions in R</description>
     </item>
     
   </channel>
