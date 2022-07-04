@@ -47,7 +47,7 @@ tocopen = true
   [params.profileMode]
   enabled = true
   title = "nikhil agarwal"
-  subtitle = "my personal blog on data science & random musings"
+  subtitle = "my personal blog on data science & cycling"
   imageUrl = "img/nikpik.png"
   imageWidth = 120
   imageHeight = 120
@@ -112,4 +112,3 @@ identifier = "about"
 name = "about"
 url = "about/"
 weight = 2
-
