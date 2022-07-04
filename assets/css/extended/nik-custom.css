@@ -1,6 +1,13 @@
 figure {
-  font-size: 8px;
+  font-size: 6px;
   font-weight: normal;
-  font-family: "Tahoma", sans-serif;
-  font-style: italic;
+  font-family: "Arial", sans-serif;
+  font-style: oblique;
+}
+
+figcaption {
+  font-size: 6px;
+  font-weight: normal;
+  font-family: "Arial", sans-serif;
+  font-style: oblique;
 }
