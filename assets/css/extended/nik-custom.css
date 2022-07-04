@@ -1,4 +1,5 @@
-.figcaption {
+figure {
   font-size: 10px;
   font-weight: normal;
+  font-style: italic;
 }
