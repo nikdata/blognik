@@ -1,13 +1,6 @@
 figure {
   font-size: 6px;
-  font-weight: normal;
+  font-weight: 100;
   font-family: "Arial", sans-serif;
-  font-style: oblique;
-}
-
-figcaption {
-  font-size: 6px;
-  font-weight: normal;
-  font-family: "Arial", sans-serif;
-  font-style: oblique;
+  font-style: normal;
 }
