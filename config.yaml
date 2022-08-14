@@ -54,3 +54,4 @@ markup:
     ordered: false
 
 # https://stackoverflow.com/questions/65999758/toc-not-displaying-in-blogdown-post-hugo-theme-even
+# https://sebastiandedeyne.com/captioned-images-with-markdown-render-hooks-in-hugo/

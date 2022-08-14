@@ -1,8 +1,7 @@
 ---
 title: "Test Post For Figure Caption"
 date: "2022-07-04"
-ShowToc: false
-ShowReadingTime: false
+toc: false
 draft: true
 ---
 

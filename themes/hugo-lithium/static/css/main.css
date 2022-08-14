@@ -82,6 +82,10 @@ img {
   max-width: 100%;
 }
 
+figure {
+  font-style: italic;
+}
+
 .wrapper {
   overflow: hidden;
   position: relative;
