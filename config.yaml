@@ -1,6 +1,6 @@
 baseurl: "https://nik.netlify.app"
 languageCode: en-us
-title: niks
+title: "{nik}"
 theme: hugo-lithium
 googleAnalytics: ''
 disqusShortname: ''
