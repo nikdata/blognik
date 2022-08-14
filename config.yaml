@@ -1,0 +1,58 @@
+baseurl: "https://nik.netlify.app"
+languageCode: en-us
+title: "{nik}"
+theme: hugo-lithium
+googleAnalytics: ''
+disqusShortname: ''
+ignoreFiles:
+  - \.Rmd$
+  - \.Rmarkdown$
+  - _cache$
+  - \.knit\.md$
+  - \.utf8\.md$
+permalinks:
+  post: /:year/:month/:day/:slug/
+menu:
+  main:
+    - name: About
+      url: /about/
+      weight: 1
+    - name: GitHub
+      url: https://github.com/nikdata/
+      weight: 2
+    - name: LinkedIn
+      url: https://linkedin.com/in/nik-agarwal
+      weight: 3
+    - name: Twitter
+      url: https://twitter.com/nikagarwal
+      weight: 4
+
+params:
+  MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
+  MathJaxVersion: 2.7.5
+  description: My personal blog on data science & cycling
+  favicon: favicon.ico
+  highlightjsCDN: //cdnjs.cloudflare.com/ajax/libs
+  highlightjsLang:
+    - r
+    - yaml
+  highlightjsTheme: sunburst
+  highlightjsVersion: 9.12.0
+  logo:
+    alt: Logo
+    height: 50
+    url: logo.png
+    width: 50
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    renderer:
+      unsafe: yes
+  tableOfContents:
+    startLevel: 1
+    endLevel: 1
+    ordered: false
+
+# https://stackoverflow.com/questions/65999758/toc-not-displaying-in-blogdown-post-hugo-theme-even
+# https://sebastiandedeyne.com/captioned-images-with-markdown-render-hooks-in-hugo/
+# https://www.w3.org/Style/Examples/007/figures.en.html
