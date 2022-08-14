@@ -12,12 +12,6 @@
     {{ if eq .Section "post" }}
     <span class="article-date">{{ .Date.Format "2006-01-02" }}</span>
     {{ end }}
-    
-    <div id="toc" class="article-toc">
-      {{ if .Params.toc }}
-        {{ .TableOfContents }}
-      {{ end }}
-    </div>
 
     <div class="article-content">
       {{ .Content }}
