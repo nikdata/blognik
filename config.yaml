@@ -1,4 +1,4 @@
-baseurl: /
+baseurl: "https://nik.netlify.app"
 languageCode: en-us
 title: niks
 theme: hugo-lithium
@@ -50,7 +50,7 @@ markup:
       unsafe: yes
   tableOfContents:
     startLevel: 1
-    endLevel: 2
+    endLevel: 1
     ordered: false
 
 # https://stackoverflow.com/questions/65999758/toc-not-displaying-in-blogdown-post-hugo-theme-even
